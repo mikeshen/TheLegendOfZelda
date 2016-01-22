@@ -60,18 +60,24 @@ public class Tile : MonoBehaviour {
 
 	// Arrange the collider for this tile
 	void SetCollider() {
-        
+       
         // Collider info from collisionData
         bc.enabled = true;
+		bc.tag = "Untagged";
+		sprend.sortingOrder = 0;
         char c = ShowMapOnCamera.S.collisionS[tileNum];
         switch (c) {
         case 'S': // Solid
             bc.center = Vector3.zero;
             bc.size = Vector3.one;
             break;
+		case 'D': // Door
+			bc.enabled = false;
+			sprend.sortingOrder = 2;
+			break;
         default:
             bc.enabled = false;
-            break;
+			break;
         }
 	}	
 }

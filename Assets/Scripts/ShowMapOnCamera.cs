@@ -193,7 +193,5 @@ public class ShowMapOnCamera : MonoBehaviour {
         return sIn.Replace("\r\n", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty).Replace("\f", string.Empty).Replace(lineSeparator, string.Empty).Replace(paragraphSeparator, string.Empty);
     }
 
-
-
 }
 
