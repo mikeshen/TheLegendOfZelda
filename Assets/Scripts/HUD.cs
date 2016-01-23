@@ -23,8 +23,8 @@ public class HUD : MonoBehaviour {
 
 		heartText.text = "Health: " + currentHealth.ToString() + " / " + totalHealth.ToString(); 
 
-		int numKeys = PlayerControl.instance.numKeys;
+		int keyCount = PlayerControl.instance.keyCount;
 
-		keyText.text = "Keys: " + numKeys.ToString();
+		keyText.text = "Keys: " + keyCount.ToString();
 	}
 }

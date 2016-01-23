@@ -11,8 +11,7 @@ public class PlayerControl : MonoBehaviour {
 
 	public int totalHealth = 3;
 	public float currentHealth = 3;
-
-	public int numKeys = 0;
+	public int keyCount = 0;
 
     public static PlayerControl instance;
 
@@ -74,40 +73,6 @@ public class PlayerControl : MonoBehaviour {
 	    }
 	}
 
-	float gridPosition(float offset, float location, ref float input) {
-	    float margin = 0.85f;
-	    if (offset <= 0.25f) {
-	        input = -1;
-	        if (offset < margin) {
-	            input = 0;
-	            location = Mathf.Floor(location);
-	        }
-	    }
-	    else if (offset >= 0.75f) {
-	        input = 1;
-	        if (Mathf.Abs(offset - 0.75f) < margin) {
-	            input = 0;
-	            location = Mathf.Ceil(location);
-	        }
-	    }
-	    else if (offset < 0.5f) {
-	        input = 1;
-	        if (Mathf.Abs(offset - 0.5f) < margin) {
-	            input = 0;
-	            location = Mathf.Floor(location) + 0.5f;
-	        }
-	    }
-	    else {
-	        input = -1;
-	        if (Mathf.Abs(offset - 0.5f) < margin) {
-	            input = 0;
-	            location = Mathf.Floor(location) + 0.5f;
-	        }
-	    }
-		return location;
-	}
-
-
     void OnTriggerEnter(Collider coll) {
 		if (coll.gameObject.tag == "Rupee") {
 			Destroy(coll.gameObject);
@@ -121,7 +86,56 @@ public class PlayerControl : MonoBehaviour {
 			}
 		} else if (coll.gameObject.tag == "Key") {
 			Destroy(coll.gameObject);
-			numKeys++;
+			keyCount++;
 		}
     }
+
+	void OnCollisionEnter(Collision coll)
+	{
+		if (coll.gameObject.tag == "LockedDoor" && keyCount > 0)
+			deleteDoors(coll.gameObject);
+	}
+
+	// CUSTOM FUNCTIONS
+
+	float gridPosition(float offset, float location, ref float input) {
+		float margin = 0.85f;
+		if (offset <= 0.25f) {
+			input = -1;
+			if (offset < margin) {
+				input = 0;
+				location = Mathf.Floor(location);
+			}
+		}
+		else if (offset >= 0.75f) {
+			input = 1;
+			if (Mathf.Abs(offset - 0.75f) < margin) {
+				input = 0;
+				location = Mathf.Ceil(location);
+			}
+		}
+		else if (offset < 0.5f) {
+			input = 1;
+			if (Mathf.Abs(offset - 0.5f) < margin) {
+				input = 0;
+				location = Mathf.Floor(location) + 0.5f;
+			}
+		}
+		else {
+			input = -1;
+			if (Mathf.Abs(offset - 0.5f) < margin) {
+				input = 0;
+				location = Mathf.Floor(location) + 0.5f;
+			}
+		}
+		return location;
+	}
+
+	void deleteDoors(GameObject door) {
+		Destroy(door.GetComponent<BoxCollider>());
+		SpriteRenderer[] srChildren = door.GetComponentsInChildren<SpriteRenderer>();
+		foreach (SpriteRenderer sr in srChildren)
+			sr.sortingOrder = 1;
+		keyCount--;
+	}
 }
