@@ -66,6 +66,8 @@ public class PlayerControl : MonoBehaviour {
 		} else if (coll.gameObject.tag == "Key") {
 			Destroy(coll.gameObject);
 			keyCount++;
+		} else if (coll.gameObject.tag == "UnderBlock") {
+			pushBlock(coll.gameObject);
 		}
     }
 
@@ -83,5 +85,19 @@ public class PlayerControl : MonoBehaviour {
 		foreach (SpriteRenderer sr in srChildren)
 			sr.sortingOrder = 1;
 		keyCount--;
+	}
+
+	void pushBlock(GameObject block) {
+		block.GetComponent<BoxCollider>().enabled = false;
+		GameObject OverBlock = GameObject.Find("023x038");
+		OverBlock.GetComponent<SpriteRenderer>().sortingOrder = 1;
+		OverBlock.AddComponent<Rigidbody>();
+		Rigidbody rb = OverBlock.GetComponent<Rigidbody>();
+		rb.constraints = RigidbodyConstraints.FreezePositionZ;
+		rb.useGravity = false;
+		rb.freezeRotation = true;
+		rb.mass = 0;
+		rb.drag = 0;
+		OverBlock.AddComponent<BlockPushing>();
 	}
 }
