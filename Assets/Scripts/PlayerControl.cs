@@ -30,6 +30,7 @@ public class PlayerControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Application.targetFrameRate = 60;
         if (instance != null)
             Debug.LogError("Multiple Link objects detected");
         instance = this;
@@ -39,38 +40,16 @@ public class PlayerControl : MonoBehaviour {
         animationStateMachine.ChangeState(new StateIdleWithSprite(this, 
                                                                   GetComponent<SpriteRenderer>(), 
                                                                   linkRunDown[0]));
+
+        controlStateMachine = new StateMachine();
+        controlStateMachine.ChangeState(new StateLinkNormalMovement(this));
 	}
 
-	void FixedUpdate () {
-	    animationStateMachine.Update();
-
-	    float horizontalInput = Input.GetAxis("Horizontal");
-	    float verticalInput = Input.GetAxis("Vertical");
-
-	    // Mod 1 gets decimal, to be used for Grid-based movement
-	    Vector3 location = instance.transform.position;
-	    float horizontalOffset = location.x % 1;
-	    float verticalOffset = location.y % 1;
-
-
-	    if (horizontalInput != 0) {
-	        verticalInput = 0;
-	        if (verticalOffset != 0 && verticalOffset != 0.5f) {
-	            horizontalInput = 0;
-	            location.y = gridPosition(verticalOffset, location.y, ref verticalInput);
-	            transform.position = location;
-	        }
-	    } else if (verticalInput != 0) {
-	        if (horizontalOffset != 0 && horizontalOffset != 0.5f) {
-	            verticalInput = 0;
-	            location.x = gridPosition(horizontalOffset, location.x, ref horizontalInput);
-				transform.position = location;
-	        }
-	    }
-
-	    if (!RoomTransitions.instance.cameraIsMoving) {
-	        GetComponent<Rigidbody>().velocity = new Vector3(horizontalInput, verticalInput, 0) * walkingVelocity;
-	    }
+	void Update () {
+        animationStateMachine.Update();
+        controlStateMachine.Update();
+        if (controlStateMachine.IsFinished())
+            controlStateMachine.ChangeState(new StateLinkNormalMovement(this));
 	}
 
     void OnTriggerEnter(Collider coll) {
@@ -97,39 +76,6 @@ public class PlayerControl : MonoBehaviour {
 	}
 
 	// CUSTOM FUNCTIONS
-
-	float gridPosition(float offset, float location, ref float input) {
-		float margin = 0.85f;
-		if (offset <= 0.25f) {
-			input = -1;
-			if (offset < margin) {
-				input = 0;
-				location = Mathf.Floor(location);
-			}
-		}
-		else if (offset >= 0.75f) {
-			input = 1;
-			if (Mathf.Abs(offset - 0.75f) < margin) {
-				input = 0;
-				location = Mathf.Ceil(location);
-			}
-		}
-		else if (offset < 0.5f) {
-			input = 1;
-			if (Mathf.Abs(offset - 0.5f) < margin) {
-				input = 0;
-				location = Mathf.Floor(location) + 0.5f;
-			}
-		}
-		else {
-			input = -1;
-			if (Mathf.Abs(offset - 0.5f) < margin) {
-				input = 0;
-				location = Mathf.Floor(location) + 0.5f;
-			}
-		}
-		return location;
-	}
 
 	void deleteDoors(GameObject door) {
 		Destroy(door.GetComponent<BoxCollider>());
