@@ -9,9 +9,14 @@ public class PlayerControl : MonoBehaviour {
     public float walkingVelocity = 4f;
     public int rupeeCount = 0;
 
-	public int totalHealth = 3;
 	public float currentHealth = 3;
+	public int totalHealth = 3;
 	public int keyCount = 0;
+
+    public bool swordThrown = false;
+    public bool arrowShot = false;
+    public bool isInvincible = false;
+    private float coolDown = 0f;
 
     public static PlayerControl instance;
 
@@ -26,7 +31,7 @@ public class PlayerControl : MonoBehaviour {
 	public EntityState currentState = EntityState.NORMAL;
 	public Direction currentDirection = Direction.SOUTH;
 
-	public GameObject selectedWeaponPrefab;
+	public GameObject[] weapons;
 
 	// Use this for initialization
 	void Start () {
@@ -46,6 +51,21 @@ public class PlayerControl : MonoBehaviour {
 	}
 
 	void Update () {
+        if (isInvincible) {
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            if (sr.color == Color.blue)
+                sr.color = Color.red;
+            else if (sr.color == Color.red)
+                sr.color = Color.white;
+            else
+                sr.color = Color.blue;
+            coolDown -= Time.deltaTime;
+            if (coolDown <= 0f) {
+                sr.color = Color.white;
+                isInvincible = false;
+                coolDown = 0f;
+            }
+        }
         animationStateMachine.Update();
         controlStateMachine.Update();
         if (controlStateMachine.IsFinished())
@@ -75,6 +95,13 @@ public class PlayerControl : MonoBehaviour {
 	{
 		if (coll.gameObject.tag == "LockedDoor" && keyCount > 0)
 			deleteDoors(coll.gameObject);
+        else if (coll.gameObject.tag == "Enemy" && !isInvincible) {
+            isInvincible = true;
+            coolDown = 3f;
+            currentHealth--;
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            sr.color = Color.red;
+        }
 	}
 
 	// CUSTOM FUNCTIONS

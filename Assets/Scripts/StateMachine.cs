@@ -72,20 +72,12 @@ public class StateIdleWithSprite : State
 		// Transition to walking animations on key press.
 		if (Input.GetKeyDown(KeyCode.DownArrow))
 			state_machine.ChangeState(new StatePlayAnimationForHeldKey(pc, renderer, pc.linkRunDown, 6, KeyCode.DownArrow));
-		if (Input.GetKeyDown(KeyCode.UpArrow))
+		else if (Input.GetKeyDown(KeyCode.UpArrow))
 			state_machine.ChangeState(new StatePlayAnimationForHeldKey(pc, renderer, pc.linkRunUp, 6, KeyCode.UpArrow));
-		if (Input.GetKeyDown(KeyCode.RightArrow))
+		else if (Input.GetKeyDown(KeyCode.RightArrow))
 			state_machine.ChangeState(new StatePlayAnimationForHeldKey(pc, renderer, pc.linkRunRight, 6, KeyCode.RightArrow));
-		if (Input.GetKeyDown(KeyCode.LeftArrow))
+		else if (Input.GetKeyDown(KeyCode.LeftArrow))
 			state_machine.ChangeState(new StatePlayAnimationForHeldKey(pc, renderer, pc.linkRunLeft, 6, KeyCode.LeftArrow));
-		if (Input.GetKeyDown(KeyCode.S))
-			state_machine.ChangeState(new StatePlayAnimationForHeldKey(pc, renderer, pc.linkRunDown, 6, KeyCode.S));
-		if (Input.GetKeyDown(KeyCode.W))
-			state_machine.ChangeState(new StatePlayAnimationForHeldKey(pc, renderer, pc.linkRunUp, 6, KeyCode.W));
-		if (Input.GetKeyDown(KeyCode.D))
-			state_machine.ChangeState(new StatePlayAnimationForHeldKey(pc, renderer, pc.linkRunRight, 6, KeyCode.D));
-		if (Input.GetKeyDown(KeyCode.A))
-			state_machine.ChangeState(new StatePlayAnimationForHeldKey(pc, renderer, pc.linkRunLeft, 6, KeyCode.A));
 	}
 }
 
@@ -136,14 +128,6 @@ public class StatePlayAnimationForHeldKey : State {
 			state_machine.ChangeState(new StatePlayAnimationForHeldKey(pc, renderer, pc.linkRunRight, 6, KeyCode.RightArrow));
 		else if (Input.GetKeyDown(KeyCode.LeftArrow))
 			state_machine.ChangeState(new StatePlayAnimationForHeldKey(pc, renderer, pc.linkRunLeft, 6, KeyCode.LeftArrow));
-		else if (Input.GetKeyDown(KeyCode.S))
-			state_machine.ChangeState(new StatePlayAnimationForHeldKey(pc, renderer, pc.linkRunDown, 6, KeyCode.S));
-		else if (Input.GetKeyDown(KeyCode.W))
-			state_machine.ChangeState(new StatePlayAnimationForHeldKey(pc, renderer, pc.linkRunUp, 6, KeyCode.W));
-		else if (Input.GetKeyDown(KeyCode.D))
-			state_machine.ChangeState(new StatePlayAnimationForHeldKey(pc, renderer, pc.linkRunRight, 6, KeyCode.D));
-		else if (Input.GetKeyDown(KeyCode.A))
-			state_machine.ChangeState(new StatePlayAnimationForHeldKey(pc, renderer, pc.linkRunLeft, 6, KeyCode.A));
 
 		// If we detect the specified key has been released, return to the idle state.
 		else if (!Input.GetKey(key))
@@ -168,8 +152,19 @@ public class StateLinkNormalMovement : State {
 		float horizontalOffset = location.x % 1;
 		float verticalOffset = location.y % 1;
 
-		if (horizontalInput != 0) {
+		if (horizontalInput != 0)
 			verticalInput = 0;
+		
+		if (horizontalInput > 0f)
+			pc.currentDirection = Direction.EAST;
+		else if (horizontalInput < 0f)
+			pc.currentDirection = Direction.WEST;
+		else if (verticalInput > 0f)
+			pc.currentDirection = Direction.NORTH;
+		else if (verticalInput < 0f)
+			pc.currentDirection = Direction.SOUTH;
+
+		if (horizontalInput != 0) {
 			if (verticalOffset != 0 && verticalOffset != 0.5f) {
 				horizontalInput = 0;
 				location.y = gridPosition(verticalOffset, location.y, ref verticalInput);
@@ -185,18 +180,11 @@ public class StateLinkNormalMovement : State {
 
 		if (!RoomTransitions.instance.cameraIsMoving)
 			pc.GetComponent<Rigidbody>().velocity = new Vector3(horizontalInput, verticalInput, 0) * pc.walkingVelocity * time_delta_fraction;
-		
-		if (horizontalInput > 0f)
-			pc.currentDirection = Direction.EAST;
-		else if (horizontalInput < 0f)
-			pc.currentDirection = Direction.WEST;
-		else if (verticalInput > 0f)
-			pc.currentDirection = Direction.NORTH;
-		else if (verticalInput < 0f)
-			pc.currentDirection = Direction.SOUTH;
 
-		if (Input.GetKeyDown(KeyCode.Z))
-			state_machine.ChangeState(new StateLinkAttack(pc, pc.selectedWeaponPrefab, 15));
+		if (Input.GetKeyDown(KeyCode.A))
+			state_machine.ChangeState(new StateLinkAttack(pc, pc.weapons[0], 15));
+		else if (Input.GetKeyDown(KeyCode.S))
+			state_machine.ChangeState(new StateLinkBowShoot(pc, pc.weapons[1], 15));
 	}
 
 	float gridPosition(float offset, float location, ref float input) {
@@ -237,7 +225,8 @@ public class StateLinkAttack : State {
 	PlayerControl pc;
 	GameObject weaponPrefab;
 	GameObject weaponInstance;
-	float cooldown = 0.15f;
+	float cooldown = 0f;
+    bool thrown = false;
 	Vector3 directionOffset = Vector3.zero;
 
 	public StateLinkAttack(PlayerControl pc, GameObject weaponPrefab, int cooldown) {
@@ -246,50 +235,55 @@ public class StateLinkAttack : State {
 		this.cooldown = cooldown;
 	}
 
-	public override void OnStart() {
-		pc.currentState = EntityState.ATTACKING;
+    public override void OnStart() {
+        pc.currentState = EntityState.ATTACKING;
 
-		// No movement is allowed when link swings
-		pc.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        // No movement is allowed when link swings
+        pc.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
-		// Spawn the weapon object
-		weaponInstance = MonoBehaviour.Instantiate(weaponPrefab, pc.transform.position, Quaternion.identity) as GameObject;
+        // Spawn the weapon object
+        weaponInstance = MonoBehaviour.Instantiate(weaponPrefab, pc.transform.position, Quaternion.identity) as GameObject;
 
-		// Detect the offset position and new angle of the weapon
-		// This is based on the direction that Link is facing
-		Vector3 directionEulerangle = Vector3.zero;
+        // Detect the offset position and new angle of the weapon
+        // This is based on the direction that Link is facing
+        Vector3 directionEulerangle = Vector3.zero;
 
-		if (pc.currentDirection == Direction.NORTH) {
-			directionOffset = new Vector3(0, 1, 0);
-			directionEulerangle = new Vector3(0, 0, 90);
-		}
-		else if (pc.currentDirection == Direction.EAST) {
-			directionOffset = new Vector3(1, 0, 0);
-			directionEulerangle = new Vector3(0, 0, 0);
-		}
-		else if (pc.currentDirection == Direction.SOUTH) {
-			directionOffset = new Vector3(0, -1, 0);
-			directionEulerangle = new Vector3(0, 0, 270);
-		}
-		else if (pc.currentDirection == Direction.WEST) {
-			directionOffset = new Vector3(-1, 0, 0);
-			directionEulerangle = new Vector3(0, 0, 180);
-		}
+        if (pc.currentDirection == Direction.NORTH) {
+            directionOffset = new Vector3(0, 1, 0);
+            directionEulerangle = new Vector3(0, 0, 90);
+        }
+        else if (pc.currentDirection == Direction.EAST) {
+            directionOffset = new Vector3(1, 0, 0);
+            directionEulerangle = new Vector3(0, 0, 0);
+        }
+        else if (pc.currentDirection == Direction.SOUTH) {
+            directionOffset = new Vector3(0, -1, 0);
+            directionEulerangle = new Vector3(0, 0, 270);
+        }
+        else if (pc.currentDirection == Direction.WEST) {
+            directionOffset = new Vector3(-1, 0, 0);
+            directionEulerangle = new Vector3(0, 0, 180);
+        }
 
-		// Move and rotate weapon
-		// weaponInstance.transform.position += directionOffset;
-		Quaternion newWeaponRotation = new Quaternion();
-		newWeaponRotation.eulerAngles = directionEulerangle;
-		weaponInstance.transform.rotation = newWeaponRotation;
-		if (pc.totalHealth != pc.currentHealth)
-			directionOffset += weaponInstance.transform.position;
-	}
+        // Move and rotate weapon
+        // weaponInstance.transform.position += directionOffset;
+        Quaternion newWeaponRotation = new Quaternion();
+        newWeaponRotation.eulerAngles = directionEulerangle;
+        weaponInstance.transform.rotation = newWeaponRotation;
+        if (pc.totalHealth != pc.currentHealth || pc.swordThrown)
+            directionOffset += weaponInstance.transform.position;
+        else {
+            pc.swordThrown = true;
+            thrown = true;
+            weaponInstance.GetComponent<Rigidbody>().velocity = directionOffset * 12;
+            weaponInstance.AddComponent<SwordThrow>();
+        }
+    }
 
 	public override void OnUpdate(float time_delta_fraction) {
-		 if (pc.totalHealth == pc.currentHealth)
-			weaponInstance.transform.position = Vector3.Slerp(weaponInstance.transform.position, weaponInstance.transform.position += directionOffset, 0.4f);
-		else
-			weaponInstance.transform.position = Vector3.Slerp(weaponInstance.transform.position, directionOffset, 0.7f);
+        if (!thrown)
+            weaponInstance.transform.position = Vector3.Slerp(weaponInstance.transform.position, directionOffset, 0.7f);
+
 		cooldown -= time_delta_fraction;
 		if (cooldown <= 0)
 			ConcludeState();
@@ -297,16 +291,81 @@ public class StateLinkAttack : State {
 
 	public override void OnFinish() {
 		pc.currentState = EntityState.NORMAL;
-		MonoBehaviour.Destroy(weaponInstance);
+        if (!thrown)
+            MonoBehaviour.Destroy(weaponInstance);
+	}
+}
+
+public class StateLinkBowShoot : State {
+	PlayerControl pc;
+	GameObject weaponPrefab;
+	GameObject weaponInstance;
+	float cooldown = 0f;
+	Vector3 directionOffset = Vector3.zero;
+
+	public StateLinkBowShoot(PlayerControl pc, GameObject weaponPrefab, int cooldown) {
+		this.pc = pc;
+		this.weaponPrefab = weaponPrefab;
+		this.cooldown = cooldown;
 	}
 
+    public override void OnStart() {
+        if (pc.rupeeCount <= 0 || pc.arrowShot) {
+            ConcludeState();
+        }
+        else {
+            pc.rupeeCount--;
+            pc.arrowShot = true;
+            pc.currentState = EntityState.ATTACKING;
+
+            // No movement is allowed when link swings
+            pc.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+            // Spawn the weapon object
+            weaponInstance = MonoBehaviour.Instantiate(weaponPrefab, pc.transform.position, Quaternion.identity) as GameObject;
+
+            // Detect the offset position and new angle of the weapon
+            // This is based on the direction that Link is facing
+            Vector3 directionEulerangle = Vector3.zero;
+
+            if (pc.currentDirection == Direction.NORTH) {
+                directionOffset = new Vector3(0, 1, 0);
+                directionEulerangle = new Vector3(0, 0, 90);
+            }
+            else if (pc.currentDirection == Direction.EAST) {
+                directionOffset = new Vector3(1, 0, 0);
+                directionEulerangle = new Vector3(0, 0, 0);
+            }
+            else if (pc.currentDirection == Direction.SOUTH) {
+                directionOffset = new Vector3(0, -1, 0);
+                directionEulerangle = new Vector3(0, 0, 270);
+            }
+            else if (pc.currentDirection == Direction.WEST) {
+                directionOffset = new Vector3(-1, 0, 0);
+                directionEulerangle = new Vector3(0, 0, 180);
+            }
+
+            // Move and rotate weapon
+            Quaternion newWeaponRotation = new Quaternion();
+            newWeaponRotation.eulerAngles = directionEulerangle;
+            weaponInstance.transform.rotation = newWeaponRotation;
+            weaponInstance.GetComponent<Rigidbody>().velocity = directionOffset * 12;
+            weaponInstance.AddComponent<BowShoot>();
+        }
+    }
+
+	public override void OnUpdate(float time_delta_fraction) {
+		cooldown -= time_delta_fraction;
+		if (cooldown <= 0)
+			ConcludeState();
+	}
+
+	public override void OnFinish() {
+		pc.currentState = EntityState.NORMAL;
+	}
 }
 // Additional recommended states:
 // StateDeath
 // StateDamaged
 // StateWeaponSwing
 // StateVictory
-
-// Additional control states:
-// LinkNormalMovekment.
-// LinkStunnedState.
