@@ -8,42 +8,30 @@ public class RoomTransitions : MonoBehaviour {
 	public Vector3 newCameraPos;
 	public bool cameraIsMoving = false;
 
-	public void ShiftCamera(Direction dir) {
-
-		newCameraPos = gameObject.transform.position;
-
-		switch (dir) {
-		case Direction.NORTH:
-			newCameraPos.y += 11f;
-			break;
-		case Direction.SOUTH:
-			newCameraPos.y -= 11;
-			break;
-		case Direction.EAST:
-			newCameraPos.x += ShowMapOnCamera.S.screenSize.x;
-			break;
-		case Direction.WEST:
-			newCameraPos.x -= ShowMapOnCamera.S.screenSize.x;
-			break;
-		}
-	}
-
-	public void CheckLinkLocation() {
+	void CheckLinkLocation() {
 		Vector3 linkLocation = PlayerControl.instance.transform.position;
 		float linkToCameraX = linkLocation.x - transform.position.x;
 		float linkToCameraY = linkLocation.y - transform.position.y;
 
 		if (linkToCameraX <= -8) {
-			ShiftCamera(Direction.WEST);
+            newCameraPos = gameObject.transform.position;
+			newCameraPos.x -= ShowMapOnCamera.S.screenSize.x;
+            PlayerControl.instance.roomOffsetX--;
 		}
 		else if (linkToCameraX >= 8) {
-			ShiftCamera(Direction.EAST);
+            newCameraPos = gameObject.transform.position;
+			newCameraPos.x += ShowMapOnCamera.S.screenSize.x;
+            PlayerControl.instance.roomOffsetX++;
 		}
 		else if (linkToCameraY <= -7) {
-			ShiftCamera(Direction.SOUTH);
+            newCameraPos = gameObject.transform.position;
+			newCameraPos.y -= 11;
+            PlayerControl.instance.roomOffsetX++;
 		}
 		else if (linkToCameraY >= 4) {
-			ShiftCamera(Direction.NORTH);
+            newCameraPos = gameObject.transform.position;
+			newCameraPos.y += 11f;
+            PlayerControl.instance.roomOffsetY++;
 		}
 	}
 
@@ -54,7 +42,10 @@ public class RoomTransitions : MonoBehaviour {
 	}
 
 	// Fixed update used to make camera move consistently regardless of frame rate
-	void FixedUpdate () {
+	void FixedUpdate() {
+        if (PlayerControl.instance.inBowRoom)
+            return;
+
 		CheckLinkLocation();
 		transform.position = Vector3.MoveTowards (transform.position, newCameraPos, 0.1f);
 		if (transform.position == newCameraPos) {

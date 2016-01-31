@@ -52,8 +52,8 @@ public class State {
 
 // A State that takes a renderer and a sprite, and implements idling behavior.
 // The state is capable of transitioning to a walking state upon key press.
-public class StateIdleWithSprite : State
-{ PlayerControl pc;
+public class StateIdleWithSprite : State {
+    PlayerControl pc;
 	SpriteRenderer renderer;
 	Sprite sprite;
 
@@ -152,16 +152,18 @@ public class StateLinkNormalMovement : State {
 		float horizontalOffset = location.x % 1;
 		float verticalOffset = location.y % 1;
 
-		if (horizontalInput != 0)
-			verticalInput = 0;
+        if (horizontalInput != 0) {
+            pc.secondaryDirection = (int)verticalInput;
+            verticalInput = 0;
+        }
 		
-		if (horizontalInput > 0f)
+		if (horizontalInput > 0)
 			pc.currentDirection = Direction.EAST;
-		else if (horizontalInput < 0f)
+		else if (horizontalInput < 0)
 			pc.currentDirection = Direction.WEST;
-		else if (verticalInput > 0f)
+		else if (verticalInput > 0)
 			pc.currentDirection = Direction.NORTH;
-		else if (verticalInput < 0f)
+		else if (verticalInput < 0)
 			pc.currentDirection = Direction.SOUTH;
 
 		if (horizontalInput != 0) {
@@ -184,7 +186,10 @@ public class StateLinkNormalMovement : State {
 		if (Input.GetKeyDown(KeyCode.A))
 			state_machine.ChangeState(new StateLinkAttack(pc, pc.weapons[0], 15));
 		else if (Input.GetKeyDown(KeyCode.S))
-			state_machine.ChangeState(new StateLinkBowShoot(pc, pc.weapons[1], 15));
+            if (pc.hasBoomerang && pc.bowOrBoomerang)
+                state_machine.ChangeState(new StateLinkBoomerangThrow(pc, pc.weapons[2], 15));
+            else if (pc.hasBow && !pc.bowOrBoomerang)
+			    state_machine.ChangeState(new StateLinkBowShoot(pc, pc.weapons[1], 15));
 	}
 
 	float gridPosition(float offset, float location, ref float input) {
@@ -249,19 +254,19 @@ public class StateLinkAttack : State {
         Vector3 directionEulerangle = Vector3.zero;
 
         if (pc.currentDirection == Direction.NORTH) {
-            directionOffset = new Vector3(0, 1, 0);
+            directionOffset = Vector3.up;
             directionEulerangle = new Vector3(0, 0, 90);
         }
         else if (pc.currentDirection == Direction.EAST) {
-            directionOffset = new Vector3(1, 0, 0);
-            directionEulerangle = new Vector3(0, 0, 0);
+            directionOffset = Vector3.right;
+            directionEulerangle = new Vector3(30, 0, 0);
         }
         else if (pc.currentDirection == Direction.SOUTH) {
-            directionOffset = new Vector3(0, -1, 0);
+            directionOffset = Vector3.down;
             directionEulerangle = new Vector3(0, 0, 270);
         }
         else if (pc.currentDirection == Direction.WEST) {
-            directionOffset = new Vector3(-1, 0, 0);
+            directionOffset = Vector3.left;
             directionEulerangle = new Vector3(0, 0, 180);
         }
 
@@ -299,9 +304,7 @@ public class StateLinkAttack : State {
 public class StateLinkBowShoot : State {
 	PlayerControl pc;
 	GameObject weaponPrefab;
-	GameObject weaponInstance;
-	float cooldown = 0f;
-	Vector3 directionOffset = Vector3.zero;
+	float cooldown = 0;
 
 	public StateLinkBowShoot(PlayerControl pc, GameObject weaponPrefab, int cooldown) {
 		this.pc = pc;
@@ -310,9 +313,8 @@ public class StateLinkBowShoot : State {
 	}
 
     public override void OnStart() {
-        if (pc.rupeeCount <= 0 || pc.arrowShot) {
+        if (pc.rupeeCount <= 0 || pc.arrowShot)
             ConcludeState();
-        }
         else {
             pc.rupeeCount--;
             pc.arrowShot = true;
@@ -322,26 +324,27 @@ public class StateLinkBowShoot : State {
             pc.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
             // Spawn the weapon object
-            weaponInstance = MonoBehaviour.Instantiate(weaponPrefab, pc.transform.position, Quaternion.identity) as GameObject;
+            GameObject weaponInstance = MonoBehaviour.Instantiate(weaponPrefab, pc.transform.position, Quaternion.identity) as GameObject;
 
             // Detect the offset position and new angle of the weapon
             // This is based on the direction that Link is facing
             Vector3 directionEulerangle = Vector3.zero;
+            Vector3 directionOffset = Vector3.zero;
 
             if (pc.currentDirection == Direction.NORTH) {
-                directionOffset = new Vector3(0, 1, 0);
+                directionOffset = Vector3.up;
                 directionEulerangle = new Vector3(0, 0, 90);
             }
             else if (pc.currentDirection == Direction.EAST) {
-                directionOffset = new Vector3(1, 0, 0);
+                directionOffset = Vector3.right;
                 directionEulerangle = new Vector3(0, 0, 0);
             }
             else if (pc.currentDirection == Direction.SOUTH) {
-                directionOffset = new Vector3(0, -1, 0);
+                directionOffset = Vector3.down;
                 directionEulerangle = new Vector3(0, 0, 270);
             }
             else if (pc.currentDirection == Direction.WEST) {
-                directionOffset = new Vector3(-1, 0, 0);
+                directionOffset = Vector3.left;
                 directionEulerangle = new Vector3(0, 0, 180);
             }
 
@@ -364,8 +367,45 @@ public class StateLinkBowShoot : State {
 		pc.currentState = EntityState.NORMAL;
 	}
 }
+
+public class StateLinkBoomerangThrow : State {
+    PlayerControl pc;
+    GameObject weaponPrefab;
+    float cooldown = 0f;
+
+    public StateLinkBoomerangThrow(PlayerControl pc, GameObject weaponPrefab, int cooldown) {
+        this.pc = pc;
+        this.weaponPrefab = weaponPrefab;
+        this.cooldown = cooldown;
+    }
+
+    public override void OnStart() {
+        if (pc.boomerangThrown)
+            ConcludeState();
+        else {
+            pc.boomerangThrown = true;
+            pc.currentState = EntityState.ATTACKING;
+
+            // No movement is allowed when link swings
+            pc.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+            // Spawn the weapon object
+            GameObject weaponInstance = MonoBehaviour.Instantiate(weaponPrefab, pc.transform.position, Quaternion.identity) as GameObject;
+            weaponInstance.AddComponent<BoomerangThrow>();
+        }
+    }
+
+    public override void OnUpdate(float time_delta_fraction) {
+        cooldown -= time_delta_fraction;
+        if (cooldown <= 0)
+            ConcludeState();
+    }
+
+    public override void OnFinish() {
+        pc.currentState = EntityState.NORMAL;
+    }
+}
 // Additional recommended states:
 // StateDeath
 // StateDamaged
-// StateWeaponSwing
 // StateVictory

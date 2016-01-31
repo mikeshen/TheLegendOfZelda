@@ -1,131 +1,199 @@
 fileFormatVersion: 2
-guid: 014fe357d2c4bf94b89e06d12b6a65d0
-timeCreated: 1453522295
+guid: c17f42a070645e347a927acabaa78fc9
+timeCreated: 1454046900
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: enemy_sprites_0
-    21300002: enemy_sprites_1
-    21300004: enemy_sprites_2
-    21300006: enemy_sprites_3
-    21300008: enemy_sprites_4
-    21300010: enemy_sprites_5
-    21300012: enemy_sprites_6
-    21300014: enemy_sprites_7
-    21300016: enemy_sprites_8
-    21300018: enemy_sprites_9
-    21300020: enemy_sprites_10
-    21300022: enemy_sprites_11
-    21300024: enemy_sprites_12
-    21300026: enemy_sprites_13
-    21300028: enemy_sprites_14
-    21300030: enemy_sprites_15
-    21300032: enemy_sprites_16
-    21300034: enemy_sprites_17
-    21300036: enemy_sprites_18
-    21300038: enemy_sprites_19
-    21300040: enemy_sprites_20
-    21300042: enemy_sprites_21
-    21300044: enemy_sprites_22
-    21300046: enemy_sprites_23
-    21300048: enemy_sprites_24
-    21300050: enemy_sprites_25
-    21300052: enemy_sprites_26
-    21300054: enemy_sprites_27
-    21300056: enemy_sprites_28
-    21300058: enemy_sprites_29
-    21300060: enemy_sprites_30
-    21300062: enemy_sprites_31
-    21300064: enemy_sprites_32
-    21300066: enemy_sprites_33
-    21300068: enemy_sprites_34
-    21300070: enemy_sprites_35
-    21300072: enemy_sprites_36
-    21300074: enemy_sprites_37
-    21300076: enemy_sprites_38
-    21300078: enemy_sprites_39
-    21300080: enemy_sprites_40
-    21300082: enemy_sprites_41
-    21300084: enemy_sprites_42
-    21300086: enemy_sprites_43
-    21300088: enemy_sprites_44
-    21300090: enemy_sprites_45
-    21300092: enemy_sprites_46
-    21300094: enemy_sprites_47
-    21300096: enemy_sprites_48
-    21300098: enemy_sprites_49
-    21300100: enemy_sprites_50
-    21300102: enemy_sprites_51
-    21300104: enemy_sprites_52
-    21300106: enemy_sprites_53
-    21300108: enemy_sprites_54
-    21300110: enemy_sprites_55
-    21300112: enemy_sprites_56
-    21300114: enemy_sprites_57
-    21300116: enemy_sprites_58
-    21300118: enemy_sprites_59
-    21300120: enemy_sprites_60
-    21300122: enemy_sprites_61
-    21300124: enemy_sprites_62
-    21300126: enemy_sprites_63
-    21300128: enemy_sprites_64
-    21300130: enemy_sprites_65
-    21300132: enemy_sprites_66
-    21300134: enemy_sprites_67
-    21300136: enemy_sprites_68
-    21300138: enemy_sprites_69
-    21300140: enemy_sprites_70
-    21300142: enemy_sprites_71
-    21300144: enemy_sprites_72
-    21300146: enemy_sprites_73
-    21300148: enemy_sprites_74
-    21300150: enemy_sprites_75
-    21300152: enemy_sprites_76
-    21300154: enemy_sprites_77
-    21300156: enemy_sprites_78
-    21300158: enemy_sprites_79
-    21300160: enemy_sprites_80
-    21300162: enemy_sprites_81
-    21300164: enemy_sprites_82
-    21300166: enemy_sprites_83
-    21300168: enemy_sprites_84
-    21300170: enemy_sprites_85
-    21300172: enemy_sprites_86
-    21300174: enemy_sprites_87
-    21300176: enemy_sprites_88
-    21300178: enemy_sprites_89
-    21300180: enemy_sprites_90
-    21300182: enemy_sprites_91
-    21300184: enemy_sprites_92
-    21300186: enemy_sprites_93
-    21300188: enemy_sprites_94
-    21300190: enemy_sprites_95
-    21300192: enemy_sprites_96
-    21300194: enemy_sprites_97
-    21300196: enemy_sprites_98
-    21300198: enemy_sprites_99
-    21300200: enemy_sprites_100
-    21300202: enemy_sprites_101
-    21300204: enemy_sprites_102
-    21300206: enemy_sprites_103
-    21300208: enemy_sprites_104
-    21300210: enemy_sprites_105
-    21300212: enemy_sprites_106
-    21300214: enemy_sprites_107
-    21300216: enemy_sprites_108
-    21300218: enemy_sprites_109
-    21300220: enemy_sprites_110
-    21300222: enemy_sprites_111
-    21300224: enemy_sprites_112
-    21300226: enemy_sprites_113
-    21300228: enemy_sprites_114
-    21300230: enemy_sprites_115
-    21300232: enemy_sprites_116
-    21300234: enemy_sprites_117
-    21300236: enemy_sprites_118
-    21300238: enemy_sprites_119
-    21300240: enemy_sprites_120
-    21300242: enemy_sprites_121
+    21300000: enemies_2_0
+    21300002: enemies_2_1
+    21300004: enemies_2_2
+    21300006: enemies_2_3
+    21300008: enemies_2_4
+    21300010: enemies_2_5
+    21300012: enemies_2_6
+    21300014: enemies_2_7
+    21300016: enemies_2_8
+    21300018: enemies_2_9
+    21300020: enemies_2_10
+    21300022: enemies_2_11
+    21300024: enemies_2_12
+    21300026: enemies_2_13
+    21300028: enemies_2_14
+    21300030: enemies_2_15
+    21300032: enemies_2_16
+    21300034: enemies_2_17
+    21300036: enemies_2_18
+    21300038: enemies_2_19
+    21300040: enemies_2_20
+    21300042: enemies_2_21
+    21300044: enemies_2_22
+    21300046: enemies_2_23
+    21300048: enemies_2_24
+    21300050: enemies_2_25
+    21300052: enemies_2_26
+    21300054: enemies_2_27
+    21300056: enemies_2_28
+    21300058: enemies_2_29
+    21300060: enemies_2_30
+    21300062: enemies_2_31
+    21300064: enemies_2_32
+    21300066: enemies_2_33
+    21300068: enemies_2_34
+    21300070: enemies_2_35
+    21300072: enemies_2_36
+    21300074: enemies_2_37
+    21300076: enemies_2_38
+    21300078: enemies_2_39
+    21300080: enemies_2_40
+    21300082: enemies_2_41
+    21300084: enemies_2_42
+    21300086: enemies_2_43
+    21300088: enemies_2_44
+    21300090: enemies_2_45
+    21300092: enemies_2_46
+    21300094: enemies_2_47
+    21300096: enemies_2_48
+    21300098: enemies_2_49
+    21300100: enemies_2_50
+    21300102: enemies_2_51
+    21300104: enemies_2_52
+    21300106: enemies_2_53
+    21300108: enemies_2_54
+    21300110: enemies_2_55
+    21300112: enemies_2_56
+    21300114: enemies_2_57
+    21300116: enemies_2_58
+    21300118: enemies_2_59
+    21300120: enemies_2_60
+    21300122: enemies_2_61
+    21300124: enemies_2_62
+    21300126: enemies_2_63
+    21300128: enemies_2_64
+    21300130: enemies_2_65
+    21300132: enemies_2_66
+    21300134: enemies_2_67
+    21300136: enemies_2_68
+    21300138: enemies_2_69
+    21300140: enemies_2_70
+    21300142: enemies_2_71
+    21300144: enemies_2_72
+    21300146: enemies_2_73
+    21300148: enemies_2_74
+    21300150: enemies_2_75
+    21300152: enemies_2_76
+    21300154: enemies_2_77
+    21300156: enemies_2_78
+    21300158: enemies_2_79
+    21300160: enemies_2_80
+    21300162: enemies_2_81
+    21300164: enemies_2_82
+    21300166: enemies_2_83
+    21300168: enemies_2_84
+    21300170: enemies_2_85
+    21300172: enemies_2_86
+    21300174: enemies_2_87
+    21300176: enemies_2_88
+    21300178: enemies_2_89
+    21300180: enemies_2_90
+    21300182: enemies_2_91
+    21300184: enemies_2_92
+    21300186: enemies_2_93
+    21300188: enemies_2_94
+    21300190: enemies_2_95
+    21300192: enemies_2_96
+    21300194: enemies_2_97
+    21300196: enemies_2_98
+    21300198: enemies_2_99
+    21300200: enemies_2_100
+    21300202: enemies_2_101
+    21300204: enemies_2_102
+    21300206: enemies_2_103
+    21300208: enemies_2_104
+    21300210: enemies_2_105
+    21300212: enemies_2_106
+    21300214: enemies_2_107
+    21300216: enemies_2_108
+    21300218: enemies_2_109
+    21300220: enemies_2_110
+    21300222: enemies_2_111
+    21300224: enemies_2_112
+    21300226: enemies_2_113
+    21300228: enemies_2_114
+    21300230: enemies_2_115
+    21300232: enemies_2_116
+    21300234: enemies_2_117
+    21300236: enemies_2_118
+    21300238: enemies_2_119
+    21300240: enemies_2_120
+    21300242: enemies_2_121
+    21300244: enemies_2_122
+    21300246: enemies_2_123
+    21300248: enemies_2_124
+    21300250: enemies_2_125
+    21300252: enemies_2_126
+    21300254: enemies_2_127
+    21300256: enemies_2_128
+    21300258: enemies_2_129
+    21300260: enemies_2_130
+    21300262: enemies_2_131
+    21300264: enemies_2_132
+    21300266: enemies_2_133
+    21300268: enemies_2_134
+    21300270: enemies_2_135
+    21300272: enemies_2_136
+    21300274: enemies_2_137
+    21300276: enemies_2_138
+    21300278: enemies_2_139
+    21300280: enemies_2_140
+    21300282: enemies_2_141
+    21300284: enemies_2_142
+    21300286: enemies_2_143
+    21300288: enemies_2_144
+    21300290: enemies_2_145
+    21300292: enemies_2_146
+    21300294: enemies_2_147
+    21300296: enemies_2_148
+    21300298: enemies_2_149
+    21300300: enemies_2_150
+    21300302: enemies_2_151
+    21300304: enemies_2_152
+    21300306: enemies_2_153
+    21300308: enemies_2_154
+    21300310: enemies_2_155
+    21300312: enemies_2_156
+    21300314: enemies_2_157
+    21300316: enemies_2_158
+    21300318: enemies_2_159
+    21300320: enemies_2_160
+    21300322: enemies_2_161
+    21300324: enemies_2_162
+    21300326: enemies_2_163
+    21300328: enemies_2_164
+    21300330: enemies_2_165
+    21300332: enemies_2_166
+    21300334: enemies_2_167
+    21300336: enemies_2_168
+    21300338: enemies_2_169
+    21300340: enemies_2_170
+    21300342: enemies_2_171
+    21300344: enemies_2_172
+    21300346: enemies_2_173
+    21300348: enemies_2_174
+    21300350: enemies_2_175
+    21300352: enemies_2_176
+    21300354: enemies_2_177
+    21300356: enemies_2_178
+    21300358: enemies_2_179
+    21300360: enemies_2_180
+    21300362: enemies_2_181
+    21300364: enemies_2_182
+    21300366: enemies_2_183
+    21300368: enemies_2_184
+    21300370: enemies_2_185
+    21300372: enemies_2_186
+    21300374: enemies_2_187
+    21300376: enemies_2_188
+    21300378: enemies_2_189
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -172,637 +240,1187 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: enemy_sprites_0
+    - name: enemies_2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 211
+        y: 331
         width: 16
         height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_1
+    - name: enemies_2_1
       rect:
         serializedVersion: 2
         x: 31
-        y: 210
+        y: 330
         width: 14
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_2
+    - name: enemies_2_2
       rect:
         serializedVersion: 2
         x: 60
-        y: 211
+        y: 331
         width: 16
         height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_3
+    - name: enemies_2_3
       rect:
         serializedVersion: 2
         x: 91
-        y: 210
+        y: 330
         width: 14
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_4
+    - name: enemies_2_4
       rect:
         serializedVersion: 2
         x: 120
-        y: 211
+        y: 331
         width: 16
         height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_5
+    - name: enemies_2_5
       rect:
         serializedVersion: 2
         x: 151
-        y: 210
+        y: 330
         width: 14
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_6
+    - name: enemies_2_6
       rect:
         serializedVersion: 2
         x: 180
-        y: 211
+        y: 331
         width: 16
         height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_7
+    - name: enemies_2_7
       rect:
         serializedVersion: 2
         x: 211
-        y: 210
+        y: 330
         width: 14
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_8
+    - name: enemies_2_8
       rect:
         serializedVersion: 2
         x: 241
-        y: 211
+        y: 331
         width: 14
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_9
+    - name: enemies_2_9
       rect:
         serializedVersion: 2
         x: 271
-        y: 211
+        y: 331
         width: 14
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_10
+    - name: enemies_2_10
       rect:
         serializedVersion: 2
         x: 300
-        y: 210
+        y: 330
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_11
+    - name: enemies_2_11
       rect:
         serializedVersion: 2
         x: 334
-        y: 213
+        y: 333
         width: 8
         height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_12
+    - name: enemies_2_12
       rect:
         serializedVersion: 2
         x: 364
-        y: 213
+        y: 333
         width: 8
         height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_13
+    - name: enemies_2_13
       rect:
         serializedVersion: 2
         x: 394
-        y: 213
+        y: 333
         width: 8
         height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_14
+    - name: enemies_2_14
       rect:
         serializedVersion: 2
         x: 421
-        y: 210
+        y: 330
         width: 14
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_15
+    - name: enemies_2_15
       rect:
         serializedVersion: 2
         x: 0
-        y: 180
+        y: 300
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_16
+    - name: enemies_2_16
       rect:
         serializedVersion: 2
         x: 30
-        y: 180
+        y: 300
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_17
+    - name: enemies_2_17
       rect:
         serializedVersion: 2
         x: 60
-        y: 180
+        y: 300
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_18
+    - name: enemies_2_18
       rect:
         serializedVersion: 2
         x: 90
-        y: 180
+        y: 300
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_19
+    - name: enemies_2_19
       rect:
         serializedVersion: 2
         x: 120
-        y: 180
+        y: 300
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_20
+    - name: enemies_2_20
       rect:
         serializedVersion: 2
         x: 150
-        y: 180
+        y: 300
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_21
+    - name: enemies_2_21
       rect:
         serializedVersion: 2
         x: 180
-        y: 180
+        y: 300
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_22
+    - name: enemies_2_22
       rect:
         serializedVersion: 2
         x: 210
-        y: 180
+        y: 300
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_23
+    - name: enemies_2_23
       rect:
         serializedVersion: 2
         x: 240
-        y: 180
+        y: 300
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_24
+    - name: enemies_2_24
       rect:
         serializedVersion: 2
         x: 270
-        y: 180
+        y: 300
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_25
+    - name: enemies_2_25
       rect:
         serializedVersion: 2
         x: 300
-        y: 180
+        y: 300
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_26
+    - name: enemies_2_26
       rect:
         serializedVersion: 2
         x: 334
-        y: 183
+        y: 303
         width: 8
         height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_27
+    - name: enemies_2_27
       rect:
         serializedVersion: 2
         x: 364
-        y: 183
+        y: 303
         width: 8
         height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_28
+    - name: enemies_2_28
       rect:
         serializedVersion: 2
         x: 394
-        y: 183
+        y: 303
         width: 8
         height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_29
+    - name: enemies_2_29
       rect:
         serializedVersion: 2
         x: 421
-        y: 180
+        y: 300
         width: 14
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_30
+    - name: enemies_2_30
       rect:
         serializedVersion: 2
         x: 1
-        y: 150
+        y: 270
         width: 13
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_31
+    - name: enemies_2_31
       rect:
         serializedVersion: 2
         x: 31
-        y: 150
+        y: 270
         width: 13
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_32
+    - name: enemies_2_32
       rect:
         serializedVersion: 2
         x: 61
-        y: 150
+        y: 270
         width: 13
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_33
+    - name: enemies_2_33
       rect:
         serializedVersion: 2
         x: 91
-        y: 150
+        y: 270
         width: 13
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_34
+    - name: enemies_2_34
       rect:
         serializedVersion: 2
         x: 121
-        y: 150
+        y: 270
         width: 13
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_35
+    - name: enemies_2_35
       rect:
         serializedVersion: 2
         x: 151
-        y: 150
+        y: 270
         width: 13
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_36
+    - name: enemies_2_36
       rect:
         serializedVersion: 2
         x: 181
-        y: 150
+        y: 270
         width: 13
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_37
+    - name: enemies_2_37
       rect:
         serializedVersion: 2
         x: 211
-        y: 150
+        y: 270
         width: 13
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_38
+    - name: enemies_2_38
       rect:
         serializedVersion: 2
         x: 240
-        y: 151
+        y: 271
         width: 15
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_39
+    - name: enemies_2_39
       rect:
         serializedVersion: 2
         x: 270
-        y: 150
+        y: 270
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_40
+    - name: enemies_2_40
       rect:
         serializedVersion: 2
         x: 300
-        y: 151
+        y: 271
         width: 15
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_41
+    - name: enemies_2_41
       rect:
         serializedVersion: 2
         x: 330
-        y: 151
+        y: 271
         width: 15
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_42
+    - name: enemies_2_42
       rect:
         serializedVersion: 2
         x: 360
-        y: 150
+        y: 270
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_43
+    - name: enemies_2_43
       rect:
         serializedVersion: 2
         x: 390
-        y: 151
+        y: 271
         width: 15
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_44
+    - name: enemies_2_44
       rect:
         serializedVersion: 2
         x: 421
-        y: 150
+        y: 270
         width: 14
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_45
+    - name: enemies_2_45
       rect:
         serializedVersion: 2
         x: 1
-        y: 120
+        y: 240
         width: 13
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_46
+    - name: enemies_2_46
       rect:
         serializedVersion: 2
         x: 31
-        y: 121
+        y: 241
         width: 14
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_47
+    - name: enemies_2_47
       rect:
         serializedVersion: 2
         x: 61
-        y: 120
+        y: 240
         width: 13
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_48
+    - name: enemies_2_48
       rect:
         serializedVersion: 2
         x: 91
-        y: 121
+        y: 241
         width: 14
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_49
+    - name: enemies_2_49
       rect:
         serializedVersion: 2
         x: 121
-        y: 120
+        y: 240
         width: 13
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_50
+    - name: enemies_2_50
       rect:
         serializedVersion: 2
         x: 151
-        y: 121
+        y: 241
         width: 14
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_51
+    - name: enemies_2_51
       rect:
         serializedVersion: 2
         x: 181
-        y: 120
+        y: 240
         width: 13
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_52
+    - name: enemies_2_52
       rect:
         serializedVersion: 2
         x: 211
-        y: 121
+        y: 241
         width: 14
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_53
+    - name: enemies_2_53
       rect:
         serializedVersion: 2
         x: 241
-        y: 120
+        y: 240
         width: 14
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_54
+    - name: enemies_2_54
       rect:
         serializedVersion: 2
         x: 270
-        y: 121
+        y: 241
         width: 16
         height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_55
+    - name: enemies_2_55
       rect:
         serializedVersion: 2
         x: 301
-        y: 120
+        y: 240
         width: 14
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_56
+    - name: enemies_2_56
       rect:
         serializedVersion: 2
         x: 331
-        y: 120
+        y: 240
         width: 14
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_57
+    - name: enemies_2_57
       rect:
         serializedVersion: 2
         x: 360
+        y: 241
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_58
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 240
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_59
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 240
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 210
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_61
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 211
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_62
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 210
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_63
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 210
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_64
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 210
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_65
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 211
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_66
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 210
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_67
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 210
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_68
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 211
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_69
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 211
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_70
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 210
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_71
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 210
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_72
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 210
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_73
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 210
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_74
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 210
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_75
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_76
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 180
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_77
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 180
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_78
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 181
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_79
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 180
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_80
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 180
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_81
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 180
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_82
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 181
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_83
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 181
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_84
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 181
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_85
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 180
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_86
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 180
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_87
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 180
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_88
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 180
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_89
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 180
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 150
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_91
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 150
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_92
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 150
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_93
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 150
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_94
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 150
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_95
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 150
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_96
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 150
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_97
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 150
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_98
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 152
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_99
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 152
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_100
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 151
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_101
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 150
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_102
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 151
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_103
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 151
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_104
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 154
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_105
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 154
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_106
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_107
+      rect:
+        serializedVersion: 2
+        x: 30
         y: 121
         width: 16
         height: 15
@@ -810,706 +1428,904 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_58
-      rect:
-        serializedVersion: 2
-        x: 391
-        y: 120
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_59
-      rect:
-        serializedVersion: 2
-        x: 421
-        y: 120
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_60
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 90
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_61
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 91
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_62
-      rect:
-        serializedVersion: 2
-        x: 61
-        y: 90
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_63
-      rect:
-        serializedVersion: 2
-        x: 90
-        y: 90
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_64
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 90
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_65
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 91
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_66
-      rect:
-        serializedVersion: 2
-        x: 181
-        y: 90
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_67
-      rect:
-        serializedVersion: 2
-        x: 210
-        y: 90
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_68
-      rect:
-        serializedVersion: 2
-        x: 242
-        y: 91
-        width: 12
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_69
-      rect:
-        serializedVersion: 2
-        x: 271
-        y: 91
-        width: 14
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_70
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 90
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_71
-      rect:
-        serializedVersion: 2
-        x: 330
-        y: 90
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_72
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 90
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_73
-      rect:
-        serializedVersion: 2
-        x: 390
-        y: 90
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_74
-      rect:
-        serializedVersion: 2
-        x: 420
-        y: 90
-        width: 15
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_75
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 60
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_76
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 60
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_77
-      rect:
-        serializedVersion: 2
-        x: 61
-        y: 60
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_78
-      rect:
-        serializedVersion: 2
-        x: 90
-        y: 61
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_79
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 60
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_80
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 60
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_81
-      rect:
-        serializedVersion: 2
-        x: 181
-        y: 60
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_82
-      rect:
-        serializedVersion: 2
-        x: 210
-        y: 61
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_83
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 61
-        width: 16
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_84
-      rect:
-        serializedVersion: 2
-        x: 270
-        y: 61
-        width: 16
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_85
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 60
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_86
-      rect:
-        serializedVersion: 2
-        x: 330
-        y: 60
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_87
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 60
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_88
-      rect:
-        serializedVersion: 2
-        x: 390
-        y: 60
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_89
-      rect:
-        serializedVersion: 2
-        x: 420
-        y: 60
-        width: 15
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_90
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 30
-        width: 15
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_91
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 30
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_92
+    - name: enemies_2_108
       rect:
         serializedVersion: 2
         x: 60
-        y: 30
+        y: 120
         width: 15
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_93
+    - name: enemies_2_109
       rect:
         serializedVersion: 2
         x: 90
-        y: 30
+        y: 121
         width: 16
-        height: 16
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_94
+    - name: enemies_2_110
       rect:
         serializedVersion: 2
         x: 120
-        y: 30
+        y: 120
         width: 15
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_95
+    - name: enemies_2_111
       rect:
         serializedVersion: 2
         x: 150
-        y: 30
+        y: 121
         width: 16
-        height: 16
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_96
+    - name: enemies_2_112
       rect:
         serializedVersion: 2
         x: 180
-        y: 30
+        y: 120
         width: 15
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_97
+    - name: enemies_2_113
       rect:
         serializedVersion: 2
         x: 210
-        y: 30
+        y: 121
         width: 16
-        height: 16
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_98
+    - name: enemies_2_114
       rect:
         serializedVersion: 2
         x: 240
-        y: 32
+        y: 121
         width: 16
-        height: 12
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_99
+    - name: enemies_2_115
       rect:
         serializedVersion: 2
         x: 270
-        y: 32
+        y: 121
         width: 16
-        height: 12
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_100
+    - name: enemies_2_116
       rect:
         serializedVersion: 2
         x: 300
-        y: 31
+        y: 120
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_101
+    - name: enemies_2_117
       rect:
         serializedVersion: 2
         x: 330
-        y: 30
+        y: 120
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_102
-      rect:
-        serializedVersion: 2
-        x: 361
-        y: 31
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_103
-      rect:
-        serializedVersion: 2
-        x: 381
-        y: 31
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_104
-      rect:
-        serializedVersion: 2
-        x: 404
-        y: 34
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_105
-      rect:
-        serializedVersion: 2
-        x: 424
-        y: 34
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_106
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 15
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_107
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 1
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_108
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 0
-        width: 15
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_109
-      rect:
-        serializedVersion: 2
-        x: 90
-        y: 1
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_110
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 0
-        width: 15
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_111
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 1
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_112
-      rect:
-        serializedVersion: 2
-        x: 180
-        y: 0
-        width: 15
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_113
-      rect:
-        serializedVersion: 2
-        x: 210
-        y: 1
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_114
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 1
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_115
-      rect:
-        serializedVersion: 2
-        x: 270
-        y: 1
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_116
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_117
-      rect:
-        serializedVersion: 2
-        x: 330
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: enemy_sprites_118
+    - name: enemies_2_118
       rect:
         serializedVersion: 2
         x: 362
-        y: 0
+        y: 120
         width: 12
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_119
+    - name: enemies_2_119
       rect:
         serializedVersion: 2
         x: 382
-        y: 0
+        y: 120
         width: 12
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_120
+    - name: enemies_2_120
       rect:
         serializedVersion: 2
         x: 405
-        y: 4
+        y: 124
         width: 6
         height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: enemy_sprites_121
+    - name: enemies_2_121
       rect:
         serializedVersion: 2
         x: 425
-        y: 4
+        y: 124
         width: 6
         height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_122
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 90
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_123
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 91
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_124
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 90
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_125
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 91
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_126
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 90
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_127
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 91
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_128
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 90
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_129
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 91
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_130
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 92
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_131
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 90
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_132
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 91
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_133
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 92
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_134
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 91
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_135
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 92
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_136
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 103
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_137
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 103
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_138
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_139
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 94
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_140
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 94
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_141
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 94
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_142
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 94
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_143
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 88
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_144
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 88
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_145
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_146
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 61
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_147
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 60
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_148
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 61
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_149
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 60
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_150
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 61
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_151
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 60
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_152
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 61
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_153
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 64
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_154
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_155
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 64
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_156
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_157
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_158
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 61
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_159
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 69
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_160
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 69
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_161
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 69
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_162
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 69
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_163
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 59
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_164
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 59
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_165
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 59
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_166
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 59
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_167
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 31
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_168
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 31
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_169
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 30
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_170
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 30
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_171
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 36
+        width: 10
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_172
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 36
+        width: 12
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_173
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 30
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_174
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 30
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_175
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 36
+        width: 10
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_176
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 36
+        width: 12
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_177
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 33
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_178
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 30
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_179
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 30
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_180
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 33
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_181
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 33
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_182
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_183
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 1
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_184
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_185
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 3
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_186
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 0
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_187
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_188
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 4
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: enemies_2_189
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 4
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

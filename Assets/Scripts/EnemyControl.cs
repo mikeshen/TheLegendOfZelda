@@ -3,26 +3,20 @@ using System.Collections;
 
 public class EnemyControl : MonoBehaviour {
 
-    public float walkingVelocity = 4f;
-    public float currentHealth = 2;
-    public int totalHealth = 2;
+    public float walkingVelocity;
+    public float currentHealth;
+    public int totalHealth;
     public Direction currentDirection;
 
-    public Sprite[] SkeletonRun;
+    public Sprite[] Run;
 
-    StateMachine animationStateMachine;
-    StateMachine controlStateMachine;
+    public StateMachine animationStateMachine;
+    public StateMachine controlStateMachine;
 
     // Use this for initialization
     void Start() {
-        // Launch Idle State.
-        animationStateMachine = new StateMachine();
-        animationStateMachine.ChangeState(new SkeletonSpriteAnimation( this,
-                                                                  GetComponent<SpriteRenderer>(),
-                                                                  SkeletonRun, 6));
-
-        controlStateMachine = new StateMachine();
-        controlStateMachine.ChangeState(new StateSkeletonMovement(this));
+        currentDirection = (Direction)Random.Range(0, 3);
+        OnStart();
     }
 
     void Update() {
@@ -30,4 +24,5 @@ public class EnemyControl : MonoBehaviour {
         controlStateMachine.Update();
     }
 
+    public virtual void OnStart() {}
 }

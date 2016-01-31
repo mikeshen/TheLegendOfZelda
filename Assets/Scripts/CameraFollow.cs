@@ -45,14 +45,4 @@ public class CameraFollow : MonoBehaviour {
         float adjustedUnityUnits = valueInPixels / (Screen.height / (viewingCamera.orthographicSize * 2));
         return adjustedUnityUnits;
     }
-
-
-//    void LateUpdate () 
-//    {
-//        lerpCamX = Mathf.Lerp(this.transform.position.x, player.transform.position.x, camSpeedX);
-//        lerpCamY = this.transform.position.y;
-//        
-//        this.transform.position =  new Vector3(RoundToNearestPixel(lerpCamX, Camera.main), RoundToNearestPixel(lerpCamY, Camera.main), this.transform.position.z);
-//        
-//    }
 }

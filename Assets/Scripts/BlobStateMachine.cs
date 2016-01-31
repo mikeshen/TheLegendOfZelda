@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SkeletonSpriteAnimation : State {
+public class BlobSpriteAnimation : State {
     EnemyControl ec;
     SpriteRenderer renderer;
     Sprite[] animation;
@@ -10,7 +10,7 @@ public class SkeletonSpriteAnimation : State {
     float animation_start_time;
     int fps;
 
-    public SkeletonSpriteAnimation(EnemyControl ec, SpriteRenderer renderer, Sprite[] animation, int fps) {
+    public BlobSpriteAnimation(EnemyControl ec, SpriteRenderer renderer, Sprite[] animation, int fps) {
         this.ec = ec;
         this.renderer = renderer;
         this.animation = animation;
@@ -37,20 +37,27 @@ public class SkeletonSpriteAnimation : State {
     }
 }
 
-public class StateSkeletonMovement : State {
+public class StateBlobMovement : State {
     EnemyControl ec;
     public Vector3 targetLoc;
     public Vector3 velocity;
+    public float timePassed = 0;
+    public float pauseTime = Random.Range(0.5f, 1);
 
-    public StateSkeletonMovement(EnemyControl ec) {
+    public StateBlobMovement(EnemyControl ec) {
         this.ec = ec;
         targetLoc = ec.transform.position;
     }
 
     public override void OnUpdate(float time_delta_fraction) {
-        Vector3 currentPosition = ec.transform.position;
 
-        if (Vector3.Distance(targetLoc, currentPosition) <= .1f) {
+        timePassed += Time.deltaTime;
+        Vector3 currentPosition = ec.transform.position;
+        velocity = (targetLoc - currentPosition).normalized;
+
+        if ((Vector3.Distance(targetLoc, currentPosition)) <= 0.1f && (timePassed > pauseTime)) {
+            timePassed = 0;
+            pauseTime = Random.Range(0.5f, 1);
             float fixedX = Mathf.Round(ec.transform.position.x);
             float fixedY = Mathf.Round(ec.transform.position.y);
             Vector3 fixedPos = new Vector3(fixedX, fixedY, 0);
