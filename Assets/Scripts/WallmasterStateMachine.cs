@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SkeletonSpriteAnimation : State {
+public class WallmasterSpriteAnimation : State {
     EnemyControl ec;
     SpriteRenderer renderer;
     Sprite[] animation;
@@ -10,7 +10,7 @@ public class SkeletonSpriteAnimation : State {
     float animation_start_time;
     int fps;
 
-    public SkeletonSpriteAnimation(EnemyControl ec, SpriteRenderer renderer, Sprite[] animation, int fps) {
+    public WallmasterSpriteAnimation(EnemyControl ec, SpriteRenderer renderer, Sprite[] animation, int fps) {
         this.ec = ec;
         this.renderer = renderer;
         this.animation = animation;
@@ -37,12 +37,12 @@ public class SkeletonSpriteAnimation : State {
     }
 }
 
-public class StateSkeletonMovement : State {
+public class StateWallmasterMovement : State {
     EnemyControl ec;
     public Vector3 targetLoc;
     public Vector3 velocity;
 
-    public StateSkeletonMovement(EnemyControl ec) {
+    public StateWallmasterMovement(EnemyControl ec) {
         this.ec = ec;
         targetLoc = ec.transform.position;
     }

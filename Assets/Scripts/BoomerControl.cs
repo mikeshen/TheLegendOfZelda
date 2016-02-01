@@ -8,6 +8,7 @@ public class BoomerControl : EnemyControl {
     public Sprite[] RunLeft;
     public GameObject boomerang;
     public bool boomerangThrown;
+    public float cooldown;
 
     // Use this for initialization
     public override void OnStart() {

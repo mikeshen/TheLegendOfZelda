@@ -6,7 +6,7 @@ public enum EntityState {NORMAL, ATTACKING};
 
 public class PlayerControl : MonoBehaviour {
 
-    public float walkingVelocity = 4f;
+    public float walkingVelocity = 4;
     public int rupeeCount = 0;
 
 	public float currentHealth = 3;
@@ -22,6 +22,7 @@ public class PlayerControl : MonoBehaviour {
     public bool hasBoomerang = false;
     public bool hasBow = false;
     public bool inBowRoom = false;
+    public bool warped = false;
 
     private float coolDown = 0;
 
@@ -46,7 +47,7 @@ public class PlayerControl : MonoBehaviour {
 	public GameObject[] weapons;
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
         roomOffsetX = 2;
         roomOffsetY = 0;
 		Application.targetFrameRate = 60;
@@ -64,18 +65,17 @@ public class PlayerControl : MonoBehaviour {
         controlStateMachine.ChangeState(new StateLinkNormalMovement(this));
 	}
 
-	void FixedUpdate () {
+	void FixedUpdate() {
+        checkBowRoomTransition();
         if (isInvincible)
             LinkDamageAnimation();
-
-        if (RoomTransitions.instance.cameraIsMoving)
+        if (RoomTransitions.instance.moveCamera)
             return;
 
         animationStateMachine.Update();
         controlStateMachine.Update();
         if (controlStateMachine.IsFinished())
             controlStateMachine.ChangeState(new StateLinkNormalMovement(this));
-        checkBowRoomTransition();
     }
 
     void OnTriggerEnter(Collider coll) {
@@ -106,8 +106,13 @@ public class PlayerControl : MonoBehaviour {
             Destroy(coll.gameObject);
             hasBoomerang = true;
         }
-        else if (coll.gameObject.tag == "Enemy" && !isInvincible)
-            takeDamage(1);
+        else if (!isInvincible) {
+            if (coll.gameObject.tag == "Enemy")
+                takeDamage(0.5f);
+            else if (coll.gameObject.tag == "SpikeTrap")
+                takeDamage(1);
+
+        }
     }
 
 	void OnCollisionEnter(Collision coll)
@@ -118,12 +123,16 @@ public class PlayerControl : MonoBehaviour {
 
 	// CUSTOM FUNCTIONS
 
-    public void takeDamage(int amount) {
+    public void takeDamage(float amount) {
         isInvincible = true;
-        coolDown = 1f;
+        coolDown = 1;
         currentHealth -= amount;
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         sr.color = Color.red;
+        if (currentHealth <= 0) {
+            sr.color = Color.black;
+            Application.LoadLevel("Dungeon");
+        }
     }
 
 	void deleteDoors(GameObject door) {
@@ -169,27 +178,24 @@ public class PlayerControl : MonoBehaviour {
     }
     void checkBowRoomTransition() {
         if ((transform.position.x >= 24) && (transform.position.x <= 25) && transform.position.y == 60) {
+            GameState.destroyOnScreen();
             inBowRoom = true;
-            Vector3 linkPos = transform.position;
-            Vector3 newCameraPos = RoomTransitions.instance.transform.position;
-            linkPos.x = 19;
-            linkPos.y = 79;
-            newCameraPos.x = 23.51f;
-            newCameraPos.y = 77.3f;
-            transform.position = linkPos;
-            RoomTransitions.instance.transform.position = newCameraPos;
+            transform.position = new Vector3(83, 9f, 0);
+            RoomTransitions.instance.transform.position = new Vector3(87.5f, 6.4f, -10);
+            PlayerControl.instance.roomOffsetX = 5;
+            PlayerControl.instance.roomOffsetY = 0;
+            // spawn below
         }
 
-        if ((transform.position.y >= 80) && (transform.position.y <= 81) && transform.position.x == 19) {
-            Vector3 linkPos = transform.position;
-            Vector3 newCameraPos = RoomTransitions.instance.transform.position;
-            linkPos.x = 22;
-            linkPos.y = 58;
-            newCameraPos.x = 23.51f;
-            newCameraPos.y = 61.41f;
-            transform.position = linkPos;
-            RoomTransitions.instance.transform.position = newCameraPos;
+        if ((transform.position.y >= 10f) && (transform.position.y <= 11) && transform.position.x == 83) {
+            GameState.destroyOnScreen();
+            transform.position = new Vector3(22, 58, 0);
+            RoomTransitions.instance.transform.position = new Vector3(23.5f, 61.4f, -10);
+            PlayerControl.instance.roomOffsetX = 1;
+            PlayerControl.instance.roomOffsetY = 5;
+            // spawn below
             inBowRoom = false;
         }
+
     }
 }

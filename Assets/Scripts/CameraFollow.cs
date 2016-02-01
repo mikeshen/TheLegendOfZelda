@@ -11,7 +11,7 @@ public class CameraFollow : MonoBehaviour {
     private Camera          cam;
 
 
-	void Awake () {
+	void Awake() {
 		S = this;
 
         cam = GetComponent<Camera>();
@@ -19,9 +19,9 @@ public class CameraFollow : MonoBehaviour {
 		// Initially position the camera exactly over the poi - JB
 		transform.position = poi.position + offset;
 	}
-	
+
 	// Update is called once per frame - JB
-	void FixedUpdate () {
+	void FixedUpdate() {
 		Vector3 p0, p1, p01;
 
 		p0 = transform.position;

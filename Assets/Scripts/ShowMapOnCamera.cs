@@ -43,7 +43,7 @@ public class ShowMapOnCamera : MonoBehaviour {
     }
 
 
-	void Start () {
+	void Start() {
 		Application.targetFrameRate = 60;
 
 		// Remove the line endings from the text of the colision and destructible data
@@ -103,7 +103,7 @@ public class ShowMapOnCamera : MonoBehaviour {
 
         int x = Mathf.RoundToInt(Camera.main.transform.position.x);
         int y = Mathf.RoundToInt(Camera.main.transform.position.y);
-        
+
         int i0 = x - screenW2;
         int i1 = x + screenW2;
         int j0 = y - screenH2;
@@ -123,7 +123,7 @@ public class ShowMapOnCamera : MonoBehaviour {
                     continue;
                 } else {                                // On-Screen Tile
                     tileNum = MAP[i,j];
-                    
+
                     if (tileNum == 0) { // Empty space
                         if (MAP_TILES[i,j] != null) {
                             PushTile( MAP_TILES[i,j] );
@@ -171,7 +171,7 @@ public class ShowMapOnCamera : MonoBehaviour {
 		TILE_POOL.Add(t);
 	}
 
-	
+
 	static public string ReorderLinesOfDataFiles(string sIn) {
 		string sOut;
 		sIn = sIn.Trim();
@@ -189,7 +189,7 @@ public class ShowMapOnCamera : MonoBehaviour {
         }
         string lineSeparator = ((char) 0x2028).ToString();
         string paragraphSeparator = ((char)0x2029).ToString();
-        
+
         return sIn.Replace("\r\n", string.Empty).Replace("\n", string.Empty).Replace("\r", string.Empty).Replace("\f", string.Empty).Replace(lineSeparator, string.Empty).Replace(paragraphSeparator, string.Empty);
     }
 

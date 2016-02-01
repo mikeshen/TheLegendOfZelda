@@ -4,14 +4,10 @@ using System.Collections;
 public class Boomerang : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-	
-	}
+	void Start() {}
 	
 	// Update is called once per frame
-	void Update () {
-	
-	}
+	void Update() {}
 
     void OnTriggerEnter(Collider coll) {
         PlayerControl pc = PlayerControl.instance;

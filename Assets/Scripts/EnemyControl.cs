@@ -19,7 +19,7 @@ public class EnemyControl : MonoBehaviour {
         OnStart();
     }
 
-    void Update() {
+    void FixedUpdate() {
         animationStateMachine.Update();
         controlStateMachine.Update();
     }

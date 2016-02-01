@@ -49,11 +49,13 @@ public class StateBoomerMovement : State {
         this.boomerang = boomerang;
         targetLoc = ec.transform.position;
         velocity = Vector3.zero;
+        ec.cooldown = Random.Range(4f, 11f);
     }
 
     public override void OnUpdate(float time_delta_fraction) {
         if (!ec.boomerangThrown) {
-            if (Random.Range(0f, 1f) > 0.994f) {
+            ec.cooldown -= Time.fixedDeltaTime;
+            if (ec.cooldown < 0) {
                 ec.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 ec.boomerangThrown = true;
 

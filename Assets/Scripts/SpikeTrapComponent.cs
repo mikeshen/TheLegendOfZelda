@@ -10,16 +10,16 @@ public class SpikeTrapComponent : MonoBehaviour {
     bool moving = false;
     bool returning = false;
 	// Use this for initialization
-	void Start () {
+	void Start() {
         spikeParent = transform.parent.GetComponent<SpikeTrap>();
         if (direction == Direction.NORTH)
-            directionOffset = new Vector3(0, 1, 0);
+            directionOffset = Vector3.up;
         else if (direction == Direction.EAST)
-            directionOffset = new Vector3(1, 0, 0);
+            directionOffset = Vector3.right;
         else if (direction == Direction.SOUTH)
-            directionOffset = new Vector3(0, -1, 0);
+            directionOffset = Vector3.down;
         else if (direction == Direction.WEST)
-            directionOffset = new Vector3(-1, 0, 0);
+            directionOffset = Vector3.left;
     }
 	
 	// Update is called once per frame

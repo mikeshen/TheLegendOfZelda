@@ -16,7 +16,7 @@ public class Utilities : MonoBehaviour {
         int x = 0, y = 0;
         if (ec.currentDirection == Direction.EAST || ec.currentDirection == Direction.WEST)
             x = ec.currentDirection == Direction.EAST ? 1 : -1;
-        else 
+        else
             y = ec.currentDirection == Direction.NORTH ? 1 : -1;
 
         if (checkWalkable((int)position.x + 1, (int)position.y))
@@ -34,9 +34,9 @@ public class Utilities : MonoBehaviour {
     public static bool checkWalkable(int x, int y) {
         int tileType = ShowMapOnCamera.MAP[x, y];
         // Door Sprites
-        if (tileType == 26 || tileType == 27 || tileType == 48 || tileType == 51 || 
-            tileType == 80 || tileType == 81 || tileType == 92 || tileType == 93 || 
-            tileType == 100 || tileType == 101 || tileType == 106) 
+        if (tileType == 26 || tileType == 27 || tileType == 48 || tileType == 51 ||
+            tileType == 80 || tileType == 81 || tileType == 92 || tileType == 93 ||
+            tileType == 100 || tileType == 101 || tileType == 106)
             return false;
         return ShowMapOnCamera.S.collisionS[tileType] == '_';
     }
@@ -53,8 +53,8 @@ public class Utilities : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {}
-	
+    void Start() {}
+
 	// Update is called once per frame
-	void Update () {}
+	void Update() {}
 }

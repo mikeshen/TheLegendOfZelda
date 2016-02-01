@@ -180,8 +180,7 @@ public class StateLinkNormalMovement : State {
 			}
 		}
 
-		if (!RoomTransitions.instance.cameraIsMoving)
-			pc.GetComponent<Rigidbody>().velocity = new Vector3(horizontalInput, verticalInput, 0) * pc.walkingVelocity * time_delta_fraction;
+        pc.GetComponent<Rigidbody>().velocity = new Vector3(horizontalInput, verticalInput, 0) * pc.walkingVelocity * time_delta_fraction;
 
 		if (Input.GetKeyDown(KeyCode.A))
 			state_machine.ChangeState(new StateLinkAttack(pc, pc.weapons[0], 15));
@@ -231,7 +230,6 @@ public class StateLinkAttack : State {
 	GameObject weaponPrefab;
 	GameObject weaponInstance;
 	float cooldown = 0f;
-    bool thrown = false;
 	Vector3 directionOffset = Vector3.zero;
 
 	public StateLinkAttack(PlayerControl pc, GameObject weaponPrefab, int cooldown) {
@@ -275,19 +273,18 @@ public class StateLinkAttack : State {
         Quaternion newWeaponRotation = new Quaternion();
         newWeaponRotation.eulerAngles = directionEulerangle;
         weaponInstance.transform.rotation = newWeaponRotation;
-        if (pc.totalHealth != pc.currentHealth || pc.swordThrown)
-            directionOffset += weaponInstance.transform.position;
-        else {
+        if (pc.totalHealth == pc.currentHealth && !pc.swordThrown) {
+            GameObject magicSword = MonoBehaviour.Instantiate(weaponPrefab, pc.transform.position, Quaternion.identity) as GameObject;
+            magicSword.transform.rotation = newWeaponRotation;
             pc.swordThrown = true;
-            thrown = true;
-            weaponInstance.GetComponent<Rigidbody>().velocity = directionOffset * 12;
-            weaponInstance.AddComponent<SwordThrow>();
+            magicSword.GetComponent<Rigidbody>().velocity = directionOffset * 12;
+            magicSword.AddComponent<SwordThrow>();
         }
+        directionOffset += weaponInstance.transform.position;
     }
 
 	public override void OnUpdate(float time_delta_fraction) {
-        if (!thrown)
-            weaponInstance.transform.position = Vector3.Slerp(weaponInstance.transform.position, directionOffset, 0.7f);
+        weaponInstance.transform.position = Vector3.Slerp(weaponInstance.transform.position, directionOffset, 0.7f);
 
 		cooldown -= time_delta_fraction;
 		if (cooldown <= 0)
@@ -296,8 +293,7 @@ public class StateLinkAttack : State {
 
 	public override void OnFinish() {
 		pc.currentState = EntityState.NORMAL;
-        if (!thrown)
-            MonoBehaviour.Destroy(weaponInstance);
+        MonoBehaviour.Destroy(weaponInstance);
 	}
 }
 
@@ -371,7 +367,7 @@ public class StateLinkBowShoot : State {
 public class StateLinkBoomerangThrow : State {
     PlayerControl pc;
     GameObject weaponPrefab;
-    float cooldown = 0f;
+    float cooldown = 0;
 
     public StateLinkBoomerangThrow(PlayerControl pc, GameObject weaponPrefab, int cooldown) {
         this.pc = pc;

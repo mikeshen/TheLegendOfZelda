@@ -11,11 +11,11 @@ public class BoomerangThrow : MonoBehaviour {
         int secondaryDirection = PlayerControl.instance.secondaryDirection;
 
         if (PlayerControl.instance.currentDirection == Direction.NORTH)
-            directionOffset = new Vector3(0, 1, 0);
+            directionOffset = Vector3.up;
         else if (PlayerControl.instance.currentDirection == Direction.EAST)
             directionOffset = new Vector3(1, secondaryDirection, 0);
         else if (PlayerControl.instance.currentDirection == Direction.SOUTH)
-            directionOffset = new Vector3(0, -1, 0);
+            directionOffset = Vector3.down;
         else if (PlayerControl.instance.currentDirection == Direction.WEST)
             directionOffset = new Vector3(-1, secondaryDirection, 0);
 
@@ -23,10 +23,10 @@ public class BoomerangThrow : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         if (!returning) {
             frameCount++;
-            transform.Rotate(Vector3.forward, 1000 * Time.deltaTime);
+            transform.Rotate(Vector3.forward, 1000 * Time.fixedDeltaTime);
             transform.position = Vector3.Slerp(transform.position, directionOffset, 0.1f);
 
             float roomCenterX = PlayerControl.instance.roomOffsetX * 16 + 7.5f;
@@ -40,7 +40,7 @@ public class BoomerangThrow : MonoBehaviour {
 
             if (distance < 1)
                 returning = true;
-            else if (xDifference >= 6f || yDifference >= 4f) {
+            else if (xDifference >= 6.25f || yDifference >= 4f) {
                 if (frameCount == 1) {
                     PlayerControl.instance.boomerangThrown = false;
                     Destroy(gameObject);

@@ -12,22 +12,22 @@ public class EnemyBoomerang : MonoBehaviour {
     void Start() {
         returnPosition = transform.position;
         if (ec.currentDirection == Direction.NORTH)
-            directionOffset = new Vector3(0, 1, 0);
+            directionOffset = Vector3.up;
         else if (ec.currentDirection == Direction.EAST)
-            directionOffset = new Vector3(1, 0, 0);
+            directionOffset = Vector3.right;
         else if (ec.currentDirection == Direction.SOUTH)
-            directionOffset = new Vector3(0, -1, 0);
+            directionOffset = Vector3.down;
         else if (ec.currentDirection == Direction.WEST)
-            directionOffset = new Vector3(-1, 0, 0);
+            directionOffset = Vector3.left;
 
         directionOffset = directionOffset * 5.5f + returnPosition;
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         if (!returning) {
             frameCount++;
-            transform.Rotate(Vector3.forward, 1000 * Time.deltaTime);
+            transform.Rotate(Vector3.forward, 1000 * Time.fixedDeltaTime);
             transform.position = Vector3.Slerp(transform.position, directionOffset, 0.1f);
 
             float roomCenterX = PlayerControl.instance.roomOffsetX * 16 + 7.5f;
@@ -42,9 +42,10 @@ public class EnemyBoomerang : MonoBehaviour {
             if (distance < 1) {
                 setBoomerangReturn();
             }
-            else if (xDifference >= 6f || yDifference >= 4f) {
+            else if (xDifference >= 6.25f || yDifference >= 4f) {
                 if (frameCount == 1) {
                     ec.boomerangThrown = false;
+                    ec.cooldown = Random.Range(4f, 11f);
                     Destroy(gameObject);
                 }
                 else 
@@ -54,6 +55,7 @@ public class EnemyBoomerang : MonoBehaviour {
         }
         else if (Vector3.Distance(returnPosition, transform.position) < 0.1) {
             ec.boomerangThrown = false;
+            ec.cooldown = Random.Range(4f, 11f);
             Destroy(gameObject);
         }
         else
@@ -62,7 +64,7 @@ public class EnemyBoomerang : MonoBehaviour {
 
     void OnTriggerEnter(Collider coll) {
         if (coll.gameObject.tag == "Link" && ! PlayerControl.instance.isInvincible) {
-            PlayerControl.instance.takeDamage(1);
+            PlayerControl.instance.takeDamage(0.5f);
             setBoomerangReturn();
         }
     }

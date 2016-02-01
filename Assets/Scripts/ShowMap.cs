@@ -10,7 +10,7 @@ public class ShowMap : MonoBehaviour {
 	public int				w, h;
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
 		StartCoroutine( ShowMapCoRo() );
 	}
 

@@ -73,7 +73,7 @@ public class Tile : MonoBehaviour {
             break;
 		case 'D': // Door
 			bc.enabled = false;
-			sprend.sortingOrder = 2;
+			sprend.sortingOrder = 3;
 			break;
         default:
             bc.enabled = false;

@@ -8,15 +8,14 @@ public class BlockPush : MonoBehaviour {
 	bool destroyed;
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
 		startPosition = transform.position;
 		destroyed = false;
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-		if (RoomTransitions.instance.cameraIsMoving)
-		{
+	void Update() {
+		if (RoomTransitions.instance.moveCamera) {
 			GameObject.Find("UnderBlock1").GetComponent<BoxCollider>().enabled = true;
 			GameObject.Find("UnderBlock2").GetComponent<BoxCollider>().enabled = true;
 		}
@@ -29,8 +28,7 @@ public class BlockPush : MonoBehaviour {
 				Destroy(this.GetComponent<Rigidbody>());
 				// To only destroy the secret door when Link is actually near it
 				GameObject SecretDoor = GameObject.FindGameObjectWithTag("SecretDoor");
-				if ((PlayerControl.instance.transform.position - SecretDoor.transform.position).magnitude < 20)
-				{
+				if ((PlayerControl.instance.transform.position - SecretDoor.transform.position).magnitude < 20) {
 					Destroy(SecretDoor.GetComponent<BoxCollider>());
 					SpriteRenderer[] srChildren = SecretDoor.GetComponentsInChildren<SpriteRenderer>();
 					foreach (SpriteRenderer sr in srChildren)

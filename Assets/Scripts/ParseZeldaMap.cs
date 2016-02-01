@@ -15,30 +15,30 @@ public class ParseZeldaMap : MonoBehaviour {
 	private string[]    indices;
 	public Vector2[]	stopPoints;
 
-	
+
 	// Use this for initialization
-	void Start () {
+	void Start() {
 		StartCoroutine( ParseMap() );
 	}
-	
+
 	// Update is called once per frame
 	public IEnumerator ParseMap() {
 		// Pull in the original Metroid map
 		mapW = inputMap.width;
 		int w = inputMap.width/ss;
 		int h = inputMap.height/ss;
-		
+
 		indices = new string[w*h];
-		
+
 		mapData = inputMap.GetPixels32(0); // This will take a long time and a LOT of memory!
-		
+
 		// Create a new texture to hold the individual sprites
 		newData = new Color32[outputSpritesTextureSize * outputSpritesTextureSize];
 		outputSprites = new Texture2D(outputSpritesTextureSize, outputSpritesTextureSize, TextureFormat.RGBA32, false);
-		
+
 		// Create a list of checkSums for the individual sprites
 		checkSums = new List<ulong>();
-		
+
 		ulong cs;
 		int found = -1;
 		int ndx;
@@ -55,7 +55,7 @@ public class ParseZeldaMap : MonoBehaviour {
 				Color32[] chunk = GetChunk(i,j);
 				// Convert this section to a checkSum
 				cs = CheckSum(chunk);
-				
+
 				// Check to see whether the current checkSum matches an already-found one
 				found = -1;
 				for (int k=0; k<checkSums.Count; k++) {
@@ -78,14 +78,14 @@ public class ParseZeldaMap : MonoBehaviour {
 			print ("j="+j+"\tSprites found:"+numSprites);
 			yield return null;
 		}
-		
+
 		// Generate the Texture2D from the newData
 		outputSprites.SetPixels32(newData, 0);
 		outputSprites.Apply(true);
-		
+
 		SaveTextureToFile(outputSprites, "spriteMap.jpg");
-		
-		// Output the text file 
+
+		// Output the text file
 		string[] ind2 = new string[h];
 		string[] indTemp = new string[w];
 		for (int i=0; i<h; i++) {
@@ -93,12 +93,12 @@ public class ParseZeldaMap : MonoBehaviour {
 			ind2[i] = string.Join(" ", indTemp);
 		}
 		string str = string.Join("\n",ind2);
-		
+
 		File.WriteAllText(Application.dataPath+"/"+"spriteText.txt", str);
 		print (str);
 	}
-	
-	
+
+
 	public Color32[] GetChunk(int x, int y) {
 		Color32[] res = new Color32[ss*ss];
 		x *= ss;
@@ -117,16 +117,16 @@ public class ParseZeldaMap : MonoBehaviour {
 		}
 		return res;
 	}
-	
+
 	public ulong CheckSum(Color32[] chunk) {
 		ulong res = 0;
-		
+
 		for(int i = 0; i < chunk.Length; i++)
 			res += (ulong) (chunk[i].r * (i+1) + chunk[i].g * (i+2) + chunk[i].b * (i+3));
-		
+
 		return res;
 	}
-	
+
 	void OutputChunk(Color32[] chunk) {
 		int spl = outputSpritesTextureSize / ss;
 		int x = numSprites % spl;
@@ -134,13 +134,13 @@ public class ParseZeldaMap : MonoBehaviour {
         y = spl - y - 1;
 		x *= ss;
 		y *= ss;
-		
+
 		int ndxND, ndxC;
 		for (int i=0; i<ss; i++) {
 			for (int j=0; j<ss; j++) {
 				ndxND = x+i + (y+j)*outputSpritesTextureSize;
 				ndxC = i + j*ss;
-				
+
 				try {
 					newData[ ndxND ] = chunk[ ndxC ];
 				}
@@ -150,12 +150,12 @@ public class ParseZeldaMap : MonoBehaviour {
 			}
 		}
 	}
-	
-	
+
+
 	void SaveTextureToFile( Texture2D tex, string fileName) {
 		byte[] bytes = tex.EncodeToJPG(100);
 		File.WriteAllBytes(Application.dataPath + "/"+fileName, bytes);
 	}
-	
-	
+
+
 }
