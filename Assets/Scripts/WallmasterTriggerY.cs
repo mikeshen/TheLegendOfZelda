@@ -20,8 +20,7 @@ public class WallmasterTriggerY : MonoBehaviour {
 
 			Vector3 handSpawnPos = pc.transform.position + (3 * Vector3.up);
 			handSpawnPos.x = Mathf.Round(handSpawnPos.x);
-
-			GameObject wallmasterInstance = MonoBehaviour.Instantiate(WallmasterPrefab, handSpawnPos, Quaternion.identity) as GameObject;
+            MonoBehaviour.Instantiate(WallmasterPrefab, handSpawnPos, Quaternion.identity);
 		}
 	}
 }

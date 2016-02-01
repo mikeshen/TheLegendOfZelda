@@ -13,7 +13,7 @@ public class DragonControl : EnemyControl {
 
 		// Launch Idle State.
 		animationStateMachine = new StateMachine();
-		animationStateMachine.ChangeState(new DragonSpriteAnimation(this, GetComponent<SpriteRenderer>(), Run, 6));
+		animationStateMachine.ChangeState(new DragonSpriteAnimation(GetComponent<SpriteRenderer>(), Run, 6));
 		controlStateMachine = new StateMachine();
 		controlStateMachine.ChangeState(new StateDragonMovement(this));
 	}

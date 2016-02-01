@@ -3,15 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class SkeletonSpriteAnimation : State {
-    EnemyControl ec;
     SpriteRenderer renderer;
     Sprite[] animation;
     int animation_length;
     float animation_start_time;
     int fps;
 
-    public SkeletonSpriteAnimation(EnemyControl ec, SpriteRenderer renderer, Sprite[] animation, int fps) {
-        this.ec = ec;
+    public SkeletonSpriteAnimation(SpriteRenderer renderer, Sprite[] animation, int fps) {
         this.renderer = renderer;
         this.animation = animation;
         this.animation_length = animation.Length;

@@ -11,8 +11,10 @@ public enum Prefab {
     // BATS
     HEART,
     KEY,
-    RUPEE
-    // RUPEE5
+    RUPEE,
+    RUPEE5,
+    BOOMERANG,
+    HEARTUP
 };
 
 public class SpawnObject {
@@ -20,12 +22,14 @@ public class SpawnObject {
     public bool isAlive;
     public float x;
     public float y;
+    public int index;
 
-    public SpawnObject(Prefab prefab, bool isAlive, float x, float y) {
+    public SpawnObject(Prefab prefab, bool isAlive, float x, float y, int index) {
         this.prefab = prefab;
         this.isAlive = isAlive;
         this.x = x;
         this.y = y;
+        this.index = index;
     }
 };
 
@@ -36,7 +40,7 @@ public class Room {
     public int keyY = 0;
 
     public void addSpawnObject(Prefab p, float x, float y) {
-        enemies.Add(new SpawnObject(p, true, x, y));
+        enemies.Add(new SpawnObject(p, true, x, y, enemies.Count));
     }
     public void setEnemyToDead(int i) {
         enemies[i].isAlive = true;
@@ -63,9 +67,10 @@ public class GameState : MonoBehaviour {
     public Room[,] rooms = new Room[6, 6];
 
     // Use this for initialization
-    void Start() {
+    void Awake() {
         instance = this;
         for (int i = 0; i < 6; i++) 
+
             for (int j = 0; j < 6; j++)
                 rooms[i, j] = new Room();
 
@@ -164,11 +169,32 @@ public class GameState : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {}
 
-    public void markEnemyDestroyed(int i, int x, int y) {
+    public void enemyTakeDamage(GameObject enemy) {
+            EnemyControl ec = enemy.GetComponent<EnemyControl>();
+            ec.currentHealth--;
+            int x = PlayerControl.instance.roomOffsetX;
+            int y = PlayerControl.instance.roomOffsetY;
+            if (ec.currentHealth <= 0) {
+                if (x == 4 && y == 3)
+                    DropItem(enemy);
+                else
+                    markEnemyDestroyed(enemy, ec.index, x, y);
+                Destroy(enemy);
+            }
+    }
+
+    public void markEnemyDestroyed(GameObject enemy, int i, int x, int y) {
+        Debug.Log(i);
         Room room = rooms[x, y];
         room.enemies[i].isAlive = false;
         if (room.isKeyRoom && room.isClear())
             Instantiate(prefabs[(int)Prefab.KEY], new Vector3(room.keyX, room.keyY, 0), Quaternion.identity);
+        else if (x == 3 && y == 3 && room.isClear())
+            Instantiate(prefabs[(int)Prefab.BOOMERANG], new Vector3(enemy.transform.position.x, enemy.transform.position.y, 0), Quaternion.identity);
+        else if (x == 4 && y == 4 && room.isClear())
+            Instantiate(prefabs[(int)Prefab.HEARTUP], new Vector3(75, 49, 0), Quaternion.identity);
+        else
+            DropItem(enemy);
     }
 
     public void spawnRoom(int x, int y) {
@@ -176,8 +202,31 @@ public class GameState : MonoBehaviour {
         
         for (int i = 0; i < room.enemies.Count; i ++) {
             SpawnObject s = room.enemies[i];
-            if (s.isAlive)
-                Instantiate(prefabs[(int)s.prefab], new Vector3(s.x, s.y, 0), Quaternion.identity);
+            if (s.isAlive) {
+                GameObject g = MonoBehaviour.Instantiate(prefabs[(int)s.prefab], new Vector3(s.x, s.y, 0), Quaternion.identity) as GameObject;
+                g.GetComponent<EnemyControl>().index = s.index;
+            }
+        }
+    }
+
+    void DropItem(GameObject enemy) {
+        float chance = Random.Range(0f, 1f);
+        if (chance < 0.8)
+            return;
+        chance = Random.Range(0f, 1f);
+        if (PlayerControl.instance.currentHealth != PlayerControl.instance.totalHealth) {
+            if (chance < 0.25)
+                Instantiate(prefabs[(int)Prefab.HEART], new Vector3(enemy.transform.position.x, enemy.transform.position.y, 0), Quaternion.identity);
+            else if (chance < 0.5)
+                Instantiate(prefabs[(int)Prefab.RUPEE5], new Vector3(enemy.transform.position.x, enemy.transform.position.y, 0), Quaternion.identity);
+            else 
+                Instantiate(prefabs[(int)Prefab.RUPEE], new Vector3(enemy.transform.position.x, enemy.transform.position.y, 0), Quaternion.identity);
+        }
+        else {
+            if (chance < 0.33)
+                Instantiate(prefabs[(int)Prefab.RUPEE5], new Vector3(enemy.transform.position.x, enemy.transform.position.y, 0), Quaternion.identity);
+            else
+                Instantiate(prefabs[(int)Prefab.RUPEE], new Vector3(enemy.transform.position.x, enemy.transform.position.y, 0), Quaternion.identity);
         }
 
     }
@@ -201,5 +250,11 @@ public class GameState : MonoBehaviour {
         gameObjects = GameObject.FindGameObjectsWithTag("EnemyWeapon");
         for (int i = 0; i < gameObjects.Length; i++)
             Destroy(gameObjects[i]);
+
+        PlayerControl pc = PlayerControl.instance;
+        pc.arrowShot = false;
+        pc.swordThrown = false;
+        pc.boomerangThrown = false;
     }
+
 }

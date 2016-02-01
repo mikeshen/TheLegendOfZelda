@@ -3,15 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class WallmasterSpriteAnimation : State {
-    EnemyControl ec;
     SpriteRenderer renderer;
     Sprite[] animation;
     int animation_length;
     float animation_start_time;
     int fps;
 
-    public WallmasterSpriteAnimation(EnemyControl ec, SpriteRenderer renderer, Sprite[] animation, int fps) {
-        this.ec = ec;
+    public WallmasterSpriteAnimation(SpriteRenderer renderer, Sprite[] animation, int fps) {
         this.renderer = renderer;
         this.animation = animation;
         this.animation_length = animation.Length;

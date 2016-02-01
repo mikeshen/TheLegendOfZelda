@@ -3,15 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class DragonSpriteAnimation : State {
-    DragonControl ec;
 	SpriteRenderer renderer;
 	Sprite[] animation;
 	int animation_length;
 	float animation_start_time;
 	int fps;
 
-	public DragonSpriteAnimation(DragonControl ec,  SpriteRenderer renderer, Sprite[] animation, int fps) {
-		this.ec = ec;
+	public DragonSpriteAnimation(SpriteRenderer renderer, Sprite[] animation, int fps) {
 		this.renderer = renderer;
 		this.animation = animation;
 		this.animation_length = animation.Length;
@@ -53,7 +51,7 @@ public class StateDragonMovement : State {
 	public override void OnUpdate(float time_delta_fraction) {
 		Vector3 currentPosition = ec.transform.position;
 
-		if (Vector3.Distance(targetLoc, currentPosition) <= .1f) {
+		if (Vector3.Distance(targetLoc, currentPosition) <= 0.1f) {
 			float fixedX = Mathf.Round(ec.transform.position.x);
 			float fixedY = Mathf.Round(ec.transform.position.y);
 			Vector3 fixedPos = new Vector3(fixedX, fixedY, 0);

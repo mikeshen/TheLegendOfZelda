@@ -14,11 +14,7 @@ public class WeaponDamage : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider coll) {
-        if (coll.gameObject.tag == "Enemy") {
-            EnemyControl ec = coll.gameObject.GetComponent<EnemyControl>();
-            ec.currentHealth--;
-            if (ec.currentHealth <= 0)
-                Destroy(coll.gameObject);
-        }
+        if (coll.gameObject.tag == "Enemy")
+            GameState.instance.enemyTakeDamage(coll.gameObject);
     }
 }

@@ -11,7 +11,7 @@ public class WallmasterControl : EnemyControl {
         
         // Launch Idle State.
         animationStateMachine = new StateMachine();
-        animationStateMachine.ChangeState(new WallmasterSpriteAnimation(this, GetComponent<SpriteRenderer>(), Run, 6));
+        animationStateMachine.ChangeState(new WallmasterSpriteAnimation(GetComponent<SpriteRenderer>(), Run, 6));
         controlStateMachine = new StateMachine();
         controlStateMachine.ChangeState(new StateWallmasterMovement(this));
     }

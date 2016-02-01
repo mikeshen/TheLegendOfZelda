@@ -83,6 +83,14 @@ public class PlayerControl : MonoBehaviour {
             Destroy(coll.gameObject);
             rupeeCount++;
         }
+        else if (coll.gameObject.tag == "Rupee5") {
+            Destroy(coll.gameObject);
+            rupeeCount += 5;
+        }
+        else if (coll.gameObject.tag == "HeartUp") {
+            Destroy(coll.gameObject);
+            totalHealth++;
+        }
         else if (coll.gameObject.tag == "Heart") {
             Destroy(coll.gameObject);
             if (currentHealth + 1 <= totalHealth)
@@ -107,7 +115,7 @@ public class PlayerControl : MonoBehaviour {
             hasBoomerang = true;
         }
         else if (!isInvincible) {
-            if (coll.gameObject.tag == "Enemy")
+            if (coll.gameObject.tag == "Enemy" && coll.gameObject.GetComponent<EnemyControl>().boomerangCooldown <= 0)
                 takeDamage(0.5f);
             else if (coll.gameObject.tag == "SpikeTrap")
                 takeDamage(1);

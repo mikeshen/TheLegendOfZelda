@@ -3,15 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class BlobSpriteAnimation : State {
-    EnemyControl ec;
     SpriteRenderer renderer;
     Sprite[] animation;
     int animation_length;
     float animation_start_time;
     int fps;
 
-    public BlobSpriteAnimation(EnemyControl ec, SpriteRenderer renderer, Sprite[] animation, int fps) {
-        this.ec = ec;
+    public BlobSpriteAnimation(SpriteRenderer renderer, Sprite[] animation, int fps) {
         this.renderer = renderer;
         this.animation = animation;
         this.animation_length = animation.Length;

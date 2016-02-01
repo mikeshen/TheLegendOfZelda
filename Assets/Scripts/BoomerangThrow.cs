@@ -59,8 +59,14 @@ public class BoomerangThrow : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider coll) {
-        // TODO: stun enemy here 
         if (coll.gameObject.tag == "Enemy") {
+            EnemyControl ec = coll.gameObject.GetComponent<EnemyControl>();
+            if (ec.totalHealth == 1)
+                GameState.instance.enemyTakeDamage(coll.gameObject);
+            else if (PlayerControl.instance.roomOffsetX != 4 || PlayerControl.instance.roomOffsetY != 4) {
+                ec.boomerangCooldown = 4;
+                coll.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            }
             returning = true;
         }
         else if (coll.gameObject.tag == "Link" && returning) {

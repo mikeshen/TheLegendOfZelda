@@ -6,7 +6,9 @@ public class EnemyControl : MonoBehaviour {
     public float walkingVelocity;
     public float currentHealth;
     public int totalHealth;
+    public float boomerangCooldown;
     public Direction currentDirection;
+    public int index;
 
     public Sprite[] Run;
 
@@ -16,10 +18,18 @@ public class EnemyControl : MonoBehaviour {
     // Use this for initialization
     void Start() {
         currentDirection = (Direction)Random.Range(0, 3);
+        boomerangCooldown = 0;
         OnStart();
     }
 
     void FixedUpdate() {
+        if (boomerangCooldown > 0) {
+            boomerangCooldown -= Time.deltaTime;
+            return;
+        }
+        else
+            boomerangCooldown = 0;
+
         animationStateMachine.Update();
         controlStateMachine.Update();
     }
