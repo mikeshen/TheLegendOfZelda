@@ -18,9 +18,7 @@ public class WallmasterControl : EnemyControl {
 
     void OnTriggerStay(Collider coll) {
         if (coll.gameObject.tag == "Link") {
-            // Send Link and camera back to the beginning
             PlayerControl.instance.transform.position = transform.position;
-            //PlayerControl.instance.transform.position = new Vector3(39.5f, 3.5f, 0);
         }
     }
 

@@ -52,6 +52,17 @@ public class Utilities : MonoBehaviour {
             return Direction.SOUTH;
     }
 
+	// Send Link and camera back to the beginning
+	public static void warpLinkToStart() {
+		PlayerControl pc = PlayerControl.instance;
+		pc.warped = true;
+		pc.transform.position = new Vector3(39.5f, 3.5f, 0);
+		ShowMapOnCamera.S.transform.position = new Vector3(39.5f, 6.4f, -10);
+		GameState.destroyOnScreen();
+		pc.roomOffsetX = 2;
+		pc.roomOffsetY = 0;
+	}
+
     // Use this for initialization
     void Start() {}
 

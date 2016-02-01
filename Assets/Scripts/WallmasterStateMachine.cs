@@ -44,21 +44,35 @@ public class StateWallmasterMovement : State {
 
     public StateWallmasterMovement(EnemyControl ec) {
         this.ec = ec;
-        targetLoc = ec.transform.position;
+		// For X triggers
+		if (ec.transform.position.y == 41 || ec.transform.position.y == 35) {
+			targetLoc = ec.transform.position + (3 * Vector3.left);
+			ec.GetComponent<Rigidbody>().velocity = Vector3.left * ec.walkingVelocity;
+		}
+		// For Y triggers
+		else {
+			targetLoc = ec.transform.position + (3 * Vector3.down);
+			ec.GetComponent<Rigidbody>().velocity = Vector3.down * ec.walkingVelocity;
+		}
     }
 
     public override void OnUpdate(float time_delta_fraction) {
         Vector3 currentPosition = ec.transform.position;
 
+		// For X triggers
+		if (ec.transform.position.y == 41 && PlayerControl.instance.transform.position.y != 38 || ec.transform.position.y == 35) {
+			ec.GetComponent<Rigidbody>().velocity = Vector3.left * ec.walkingVelocity;
+		}
+
+		// For Y triggers
+		else {
+			ec.GetComponent<Rigidbody>().velocity = Vector3.down * ec.walkingVelocity;
+		}
+
         if (Vector3.Distance(targetLoc, currentPosition) <= 0.1f) {
-            float fixedX = Mathf.Round(ec.transform.position.x);
-            float fixedY = Mathf.Round(ec.transform.position.y);
-            Vector3 fixedPos = new Vector3(fixedX, fixedY, 0);
-            ec.transform.position = fixedPos;
-            velocity = Utilities.nextDirection(ec, ec.transform.position);
-            targetLoc = ec.transform.position + velocity;
-            ec.currentDirection = Utilities.findDirection(velocity);
+			GameObject.Destroy(ec.transform.root.gameObject);
+			if (ec.transform.position == PlayerControl.instance.transform.position)
+				Utilities.warpLinkToStart();
         }
-        ec.GetComponent<Rigidbody>().velocity = velocity * ec.walkingVelocity;
     }
 }

@@ -70,12 +70,96 @@ public class GameState : MonoBehaviour {
                 rooms[i, j] = new Room();
 
         Room room;
+
+		// Room 1, 0 should actually be bats
+		room = rooms[1, 0];
+		room.setKeyRoom(26, 2);
+		room.addSpawnObject(Prefab.SKELETON, 21, 6);
+		room.addSpawnObject(Prefab.SKELETON, 21, 4);
+		room.addSpawnObject(Prefab.SKELETON, 19, 3);
+
+		// Room 2, 1
+		room = rooms[2, 1];
+		room.addSpawnObject(Prefab.SKELETON, 41, 17);
+		room.addSpawnObject(Prefab.SKELETON, 38, 17);
+		room.addSpawnObject(Prefab.SKELETON, 37, 15);
+
         // Room 3, 0
         room = rooms[3, 0];
         room.setKeyRoom(50, 6);
-        room.addSpawnObject(Prefab.SKELETON, 50, 8);
+        room.addSpawnObject(Prefab.SKELETON, 53, 8);
+		room.addSpawnObject(Prefab.SKELETON, 53, 2);
+		room.addSpawnObject(Prefab.SKELETON, 56, 6);
+		room.addSpawnObject(Prefab.SKELETON, 56, 4);
+		room.addSpawnObject(Prefab.SKELETON, 60, 7);
 
-    }
+		// Room 2, 2
+		room = rooms[2, 2];
+		room.setKeyRoom(39, 27);
+		room.addSpawnObject(Prefab.SKELETON, 42, 26);
+		room.addSpawnObject(Prefab.SKELETON, 40, 27);
+		room.addSpawnObject(Prefab.SKELETON, 41, 28);
+		room.addSpawnObject(Prefab.SKELETON, 42, 30);
+		room.addSpawnObject(Prefab.SKELETON, 44, 29);
+
+		// Room 3, 2 should actually be bats
+		room = rooms[3, 2];
+		room.addSpawnObject(Prefab.SKELETON, 53, 30);
+		room.addSpawnObject(Prefab.SKELETON, 53, 24);
+		room.addSpawnObject(Prefab.SKELETON, 58, 28);
+		room.addSpawnObject(Prefab.SKELETON, 56, 28);
+		room.addSpawnObject(Prefab.SKELETON, 58, 26);
+		room.addSpawnObject(Prefab.SKELETON, 60, 29);
+		room.addSpawnObject(Prefab.SKELETON, 60, 25);
+		room.addSpawnObject(Prefab.SKELETON, 61, 27);
+
+		// Room 1, 2 should actually be bats
+		room = rooms[1, 2];
+		room.addSpawnObject(Prefab.SKELETON, 26, 30);
+		room.addSpawnObject(Prefab.SKELETON, 26, 24);
+		room.addSpawnObject(Prefab.SKELETON, 21, 26);
+		room.addSpawnObject(Prefab.SKELETON, 19, 25);
+		room.addSpawnObject(Prefab.SKELETON, 18, 27);
+		room.addSpawnObject(Prefab.SKELETON, 19, 29);
+
+		// Room 1, 3
+		room = rooms[1, 3];
+		room.addSpawnObject(Prefab.BLOB, 21, 41);
+		room.addSpawnObject(Prefab.BLOB, 19, 40);
+		room.addSpawnObject(Prefab.BLOB, 28, 40);
+
+		// Room 2, 3
+		room = rooms[2, 3];
+		room.addSpawnObject(Prefab.BLOB, 37, 41);
+		room.addSpawnObject(Prefab.BLOB, 37, 35);
+		room.addSpawnObject(Prefab.BLOB, 40, 39);
+		room.addSpawnObject(Prefab.BLOB, 40, 37);
+		room.addSpawnObject(Prefab.BLOB, 45, 38);
+
+		// Room 2, 4 
+		room = rooms[2, 4];
+		room.setKeyRoom(40, 49);
+		room.addSpawnObject(Prefab.SKELETON, 40, 49);
+		room.addSpawnObject(Prefab.SKELETON, 37, 51);
+		room.addSpawnObject(Prefab.SKELETON, 42, 47);
+
+		// Room 2, 5
+		room = rooms[2, 5];
+		room.setKeyRoom(40, 63);
+		room.addSpawnObject(Prefab.BOOMER, 37, 63);
+		room.addSpawnObject(Prefab.BOOMER, 42, 59);
+		room.addSpawnObject(Prefab.BOOMER, 39, 61);
+
+		// Room 3, 3 also boomerang drop
+		room = rooms[3, 3];
+		room.addSpawnObject(Prefab.BOOMER, 53, 41);
+		room.addSpawnObject(Prefab.BOOMER, 53, 35);
+		room.addSpawnObject(Prefab.BOOMER, 61, 38);
+
+		// Room 4, 4 also heart container drop
+		room = rooms[4, 4];
+		room.addSpawnObject(Prefab.DRAGON, 75, 49);
+	}
 
 	// Update is called once per frame
 	void Update() {}
