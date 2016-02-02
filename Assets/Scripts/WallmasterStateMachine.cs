@@ -43,7 +43,7 @@ public class StateWallmasterMovement : State {
     public StateWallmasterMovement(EnemyControl ec) {
         this.ec = ec;
 		// For X triggers
-		if (ec.transform.position.y == 41 || ec.transform.position.y == 35) {
+		if (ec.transform.position.y == 41 && PlayerControl.instance.transform.position.y != 38 || ec.transform.position.y == 35) {
 			targetLoc = ec.transform.position + (3 * Vector3.left);
 			ec.GetComponent<Rigidbody>().velocity = Vector3.left * ec.walkingVelocity;
 		}
