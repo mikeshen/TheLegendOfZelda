@@ -165,7 +165,7 @@ public class StateLinkNormalMovement : State {
 			pc.currentDirection = Direction.NORTH;
 		else if (verticalInput < 0)
 			pc.currentDirection = Direction.SOUTH;
-
+		
 		if (horizontalInput != 0) {
 			if (verticalOffset != 0 && verticalOffset != 0.5f) {
 				horizontalInput = 0;
@@ -180,6 +180,15 @@ public class StateLinkNormalMovement : State {
 			}
 		}
 
+		if (Input.GetKeyDown(KeyCode.I)) {
+			pc.isInvincible = true;
+			pc.cooldown = 9000;
+			pc.keyCount = 9000;
+			pc.rupeeCount = 9000;
+			SpriteRenderer sr = pc.GetComponent<SpriteRenderer>();
+			sr.color = Color.red;
+		}
+
         pc.GetComponent<Rigidbody>().velocity = new Vector3(horizontalInput, verticalInput, 0) * pc.walkingVelocity * time_delta_fraction;
 
 		if (Input.GetKeyDown(KeyCode.A))
@@ -189,6 +198,7 @@ public class StateLinkNormalMovement : State {
                 state_machine.ChangeState(new StateLinkBoomerangThrow(pc, pc.weapons[2], 15));
             else if (pc.hasBow && !pc.bowOrBoomerang)
 			    state_machine.ChangeState(new StateLinkBowShoot(pc, pc.weapons[1], 15));
+
 	}
 
 	float gridPosition(float offset, float location, ref float input) {
@@ -287,7 +297,7 @@ public class StateLinkAttack : State {
         Quaternion newWeaponRotation = new Quaternion();
         newWeaponRotation.eulerAngles = directionEulerangle;
         weaponInstance.transform.rotation = newWeaponRotation;
-        if (pc.totalHealth == pc.currentHealth && !pc.swordThrown) {
+		if (pc.totalHealth == pc.currentHealth && !pc.swordThrown && pc.magicSword) {
             GameObject magicSword = MonoBehaviour.Instantiate(weaponPrefab, pc.transform.position, Quaternion.identity) as GameObject;
             magicSword.transform.rotation = newWeaponRotation;
             pc.swordThrown = true;

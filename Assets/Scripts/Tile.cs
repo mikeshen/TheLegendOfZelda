@@ -63,7 +63,7 @@ public class Tile : MonoBehaviour {
        
         // Collider info from collisionData
         bc.enabled = true;
-		bc.tag = "Untagged";
+		bc.tag = "Tile";
 		sprend.sortingOrder = 0;
         char c = ShowMapOnCamera.S.collisionS[tileNum];
         switch (c) {

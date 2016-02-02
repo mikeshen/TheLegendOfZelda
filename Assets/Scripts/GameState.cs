@@ -8,13 +8,13 @@ public enum Prefab {
     DRAGON,
     SKELETON,
     WALLMASTER,
-    // BATS
     HEART,
     KEY,
     RUPEE,
     RUPEE5,
     BOOMERANG,
-    HEARTUP
+    HEARTUP,
+	BATS
 };
 
 public class SpawnObject {
@@ -69,6 +69,8 @@ public class GameState : MonoBehaviour {
     // Use this for initialization
     void Awake() {
         instance = this;
+
+		if (Application.loadedLevelName != "CustomDungeon") {
         for (int i = 0; i < 6; i++)
 
             for (int j = 0; j < 6; j++)
@@ -76,12 +78,12 @@ public class GameState : MonoBehaviour {
 
         Room room;
 
-		// Room 1, 0 should actually be bats
+		// Room 1, 0 
 		room = rooms[1, 0];
 		room.setKeyRoom(26, 2);
-		room.addSpawnObject(Prefab.SKELETON, 21, 6);
-		room.addSpawnObject(Prefab.SKELETON, 21, 4);
-		room.addSpawnObject(Prefab.SKELETON, 19, 3);
+		room.addSpawnObject(Prefab.BATS, 21, 6);
+		room.addSpawnObject(Prefab.BATS, 21, 4);
+		room.addSpawnObject(Prefab.BATS, 19, 3);
 
 		// Room 2, 1
 		room = rooms[2, 1];
@@ -107,25 +109,25 @@ public class GameState : MonoBehaviour {
 		room.addSpawnObject(Prefab.SKELETON, 42, 30);
 		room.addSpawnObject(Prefab.SKELETON, 44, 29);
 
-		// Room 3, 2 should actually be bats
+		// Room 3, 2
 		room = rooms[3, 2];
-		room.addSpawnObject(Prefab.SKELETON, 53, 30);
-		room.addSpawnObject(Prefab.SKELETON, 53, 24);
-		room.addSpawnObject(Prefab.SKELETON, 58, 28);
-		room.addSpawnObject(Prefab.SKELETON, 56, 28);
-		room.addSpawnObject(Prefab.SKELETON, 58, 26);
-		room.addSpawnObject(Prefab.SKELETON, 60, 29);
-		room.addSpawnObject(Prefab.SKELETON, 60, 25);
-		room.addSpawnObject(Prefab.SKELETON, 61, 27);
+		room.addSpawnObject(Prefab.BATS, 53, 30);
+		room.addSpawnObject(Prefab.BATS, 53, 24);
+		room.addSpawnObject(Prefab.BATS, 58, 28);
+		room.addSpawnObject(Prefab.BATS, 56, 28);
+		room.addSpawnObject(Prefab.BATS, 58, 26);
+		room.addSpawnObject(Prefab.BATS, 60, 29);
+		room.addSpawnObject(Prefab.BATS, 60, 25);
+		room.addSpawnObject(Prefab.BATS, 61, 27);
 
-		// Room 1, 2 should actually be bats
+		// Room 1, 2 
 		room = rooms[1, 2];
-		room.addSpawnObject(Prefab.SKELETON, 26, 30);
-		room.addSpawnObject(Prefab.SKELETON, 26, 24);
-		room.addSpawnObject(Prefab.SKELETON, 21, 26);
-		room.addSpawnObject(Prefab.SKELETON, 19, 25);
-		room.addSpawnObject(Prefab.SKELETON, 18, 27);
-		room.addSpawnObject(Prefab.SKELETON, 19, 29);
+		room.addSpawnObject(Prefab.BATS, 26, 30);
+		room.addSpawnObject(Prefab.BATS, 26, 24);
+		room.addSpawnObject(Prefab.BATS, 21, 26);
+		room.addSpawnObject(Prefab.BATS, 19, 25);
+		room.addSpawnObject(Prefab.BATS, 18, 27);
+		room.addSpawnObject(Prefab.BATS, 19, 29);
 
 		// Room 1, 3
 		room = rooms[1, 3];
@@ -164,6 +166,50 @@ public class GameState : MonoBehaviour {
 		// Room 4, 4 also heart container drop
 		room = rooms[4, 4];
 		room.addSpawnObject(Prefab.DRAGON, 75, 49);
+
+		// Room 5, 0
+		room = rooms[5, 0];
+		room.addSpawnObject(Prefab.BATS, 87, 6);
+		room.addSpawnObject(Prefab.BATS, 83, 3);
+		room.addSpawnObject(Prefab.BATS, 90, 8);
+		room.addSpawnObject(Prefab.BATS, 90, 6);
+		}
+
+		// Spawns for custom level
+		else {
+			for (int i = 0; i < 3; i++)
+
+				for (int j = 0; j < 3; j++)
+					rooms[i, j] = new Room();
+
+			Room room;
+
+			// Room (1, 2)
+			room = rooms[1, 2];
+			room.addSpawnObject(Prefab.BLOB, 21, 26);
+
+			// Room (1, 1)
+			room = rooms[1, 1];
+			room.addSpawnObject(Prefab.BLOB, 23, 15);
+			room.addSpawnObject(Prefab.BLOB, 19, 17);
+			room.addSpawnObject(Prefab.BLOB, 22, 12);
+			room.addSpawnObject(Prefab.BLOB, 28, 13);
+
+			// Room (1, 0)
+			room = rooms[1, 0];
+			room.setKeyRoom(27, 4);
+			room.addSpawnObject(Prefab.BOOMER, 23, 3);
+
+			// Room (0, 0)
+			room = rooms[0, 0];
+			room.setKeyRoom(11, 4);
+			room.addSpawnObject(Prefab.BATS, 11, 2);
+			room.addSpawnObject(Prefab.BATS, 4, 2);
+			room.addSpawnObject(Prefab.BLOB, 5, 6);
+			room.addSpawnObject(Prefab.BLOB, 10, 6);
+			room.addSpawnObject(Prefab.BOOMER, 12, 6);
+			room.addSpawnObject(Prefab.BOOMER, 3, 2);
+		}
 	}
 
 	// Update is called once per frame
@@ -177,6 +223,8 @@ public class GameState : MonoBehaviour {
             if (ec.currentHealth <= 0) {
                 if (x == 4 && y == 3)
                     DropItem(enemy);
+				else if (Application.loadedLevelName == "CustomDungeon" && x == 0 && y == 1)
+					DropItem(enemy);
                 else
                     markEnemyDestroyed(enemy, ec.index, x, y);
                 Destroy(enemy);
@@ -190,7 +238,6 @@ public class GameState : MonoBehaviour {
     }
 
     public void markEnemyDestroyed(GameObject enemy, int i, int x, int y) {
-        Debug.Log(i);
         Room room = rooms[x, y];
         room.enemies[i].isAlive = false;
         if (room.isKeyRoom && room.isClear())
@@ -199,20 +246,23 @@ public class GameState : MonoBehaviour {
             Instantiate(prefabs[(int)Prefab.BOOMERANG], new Vector3(enemy.transform.position.x, enemy.transform.position.y, 0), Quaternion.identity);
         else if (x == 4 && y == 4 && room.isClear())
             Instantiate(prefabs[(int)Prefab.HEARTUP], new Vector3(75, 49, 0), Quaternion.identity);
+		else if (Application.loadedLevelName == "CustomDungeon" && x == 1 && y == 2) {
+			PlayerControl.instance.weapons[0] = PlayerControl.instance.weapons[3];
+			Instantiate(PlayerControl.instance.weapons[4], new Vector3(enemy.transform.position.x, enemy.transform.position.y, 0), Quaternion.identity);
+		}
         else
             DropItem(enemy);
     }
 
     public void spawnRoom(int x, int y) {
-        Room room = rooms[x, y];
-
-        for (int i = 0; i < room.enemies.Count; i ++) {
-            SpawnObject s = room.enemies[i];
-            if (s.isAlive) {
-                GameObject g = MonoBehaviour.Instantiate(prefabs[(int)s.prefab], new Vector3(s.x, s.y, 0), Quaternion.identity) as GameObject;
-                g.GetComponent<EnemyControl>().index = s.index;
-            }
-        }
+		Room room = rooms[x, y];
+		for (int i = 0; i < room.enemies.Count; i ++) {
+			SpawnObject s = room.enemies[i];
+			if (s.isAlive) {
+				GameObject g = MonoBehaviour.Instantiate(prefabs[(int)s.prefab], new Vector3(s.x, s.y, 0), Quaternion.identity) as GameObject;
+				g.GetComponent<EnemyControl>().index = s.index;
+			}
+		}
     }
 
     void DropItem(GameObject enemy) {

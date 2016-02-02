@@ -27,7 +27,8 @@ public class PlayerControl : MonoBehaviour {
     public bool knockback = false;
     public Vector3 knockbackDir;
 
-    private float cooldown = 0;
+    public float cooldown = 0;
+	public bool magicSword = true;
 
 
     // Game State
@@ -51,8 +52,17 @@ public class PlayerControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
-        roomOffsetX = 2;
-        roomOffsetY = 0;
+		
+		if (Application.loadedLevelName != "CustomDungeon") {
+        	roomOffsetX = 2;
+        	roomOffsetY = 0;
+		}
+
+		else {
+			roomOffsetX = 2;
+			roomOffsetY = 2;
+		}
+
 		Application.targetFrameRate = 60;
         if (instance != null)
             Debug.LogError("Multiple Link objects detected");
@@ -69,7 +79,13 @@ public class PlayerControl : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-        checkBowRoomTransition();
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+			Application.LoadLevel("Dungeon");
+		else if (Input.GetKeyDown(KeyCode.Alpha2))
+			Application.LoadLevel("CustomDungeon");
+
+		if (Application.loadedLevelName != "CustomDungeon")
+        	checkBowRoomTransition();
         if (isInvincible)
             LinkDamageAnimation();
         if (knockback)
@@ -107,6 +123,8 @@ public class PlayerControl : MonoBehaviour {
             Destroy(coll.gameObject);
             keyCount++;
         }
+		else if (coll.gameObject.tag == "Triforce")
+			Application.LoadLevel("Victory");
         else if (coll.gameObject.tag == "UnderBlock")
             pushBlock(coll.gameObject);
         else if (coll.gameObject.tag == "Bow") {
@@ -119,6 +137,11 @@ public class PlayerControl : MonoBehaviour {
             Destroy(coll.gameObject);
             hasBoomerang = true;
         }
+		else if (coll.gameObject.tag == "Item") {
+			Destroy(coll.gameObject);
+			// Something with sword changing here	
+			magicSword = false;
+		}
         else if (!isInvincible) {
             if (coll.gameObject.tag == "Enemy" && coll.gameObject.GetComponent<EnemyControl>().boomerangCooldown <= 0)
                 takeDamage(0.5f, coll);
@@ -126,6 +149,7 @@ public class PlayerControl : MonoBehaviour {
                 takeDamage(1, coll);
 
         }
+
     }
 
 	void OnCollisionEnter(Collision coll)
@@ -144,7 +168,10 @@ public class PlayerControl : MonoBehaviour {
         sr.color = Color.red;
         if (currentHealth <= 0) {
             sr.color = Color.black;
-            Application.LoadLevel("Dungeon");
+			if (Application.loadedLevelName != "CustomDungeon")
+            	Application.LoadLevel("Dungeon");
+			else
+				Application.LoadLevel("CustomDungeon");
         }
         knockback = true;
 		knockbackDir = (instance.transform.position - coll.transform.position).normalized;
@@ -214,6 +241,7 @@ public class PlayerControl : MonoBehaviour {
             PlayerControl.instance.roomOffsetX = 5;
             PlayerControl.instance.roomOffsetY = 0;
             // spawn below
+			GameState.instance.spawnRoom(5, 0);
         }
 
         if ((transform.position.y >= 10f) && (transform.position.y <= 11) && transform.position.x == 83) {

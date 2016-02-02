@@ -11,6 +11,7 @@ public class HUD : MonoBehaviour {
     public bool isPaused = false;
 	public bool pausedNoHUD = false;
     public string secretMessage = "Eastmost Penninsula is the secret.";
+	public string customSecretMessage = "It's dangerous to go alone! Take this. Be weary of this new location, Link.";
     public float typingLength = 4.2f;
     private float percentTyped = 0;
 
@@ -21,7 +22,8 @@ public class HUD : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        int rupeeCount = PlayerControl.instance.rupeeCount;
+
+		int rupeeCount = PlayerControl.instance.rupeeCount;
         rupeeText.text = "Rupees: " + rupeeCount.ToString();
 
         float currentHealth = PlayerControl.instance.currentHealth;
@@ -35,12 +37,20 @@ public class HUD : MonoBehaviour {
 
         Vector3 mainCamera = RoomTransitions.instance.transform.position;
 
+
+
         if (mainCamera.y >= 39 && mainCamera.y <= 40 && mainCamera.x >= 7 && mainCamera.x <= 8) {
             int currNumLetters = (int)(secretMessage.Length * percentTyped);
             oldManText.text = secretMessage.Substring(0, currNumLetters);
             percentTyped += Time.deltaTime / typingLength;
             percentTyped = Mathf.Min(1.0f, percentTyped);
         }
+		else if (mainCamera.y >= 26 && mainCamera.y <= 27 && mainCamera.x >= 39 && mainCamera.x <= 40 && Application.loadedLevelName == "CustomDungeon") {
+			int currNumLetters = (int)(customSecretMessage.Length * percentTyped);
+			oldManText.text = customSecretMessage.Substring(0, currNumLetters);
+			percentTyped += Time.deltaTime / typingLength;
+			percentTyped = Mathf.Min(1.0f, percentTyped);
+		}
         else {
             oldManText.text = "";
             percentTyped = 0;
