@@ -155,7 +155,9 @@ public class PlayerControl : MonoBehaviour {
 				knockbackDir = Vector3.up;
 		}
 
+		instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
 		instance.GetComponent<Rigidbody>().AddForce(knockbackDir * 9999);
+		instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
 	void deleteDoors(GameObject door) {
@@ -174,10 +176,11 @@ public class PlayerControl : MonoBehaviour {
         else if (GameObject.Find("022x060") != null)
             OverBlock = GameObject.Find("022x060");
         OverBlock.GetComponent<SpriteRenderer>().sortingOrder = 1;
-        OverBlock.AddComponent<Rigidbody>();
+        //OverBlock.AddComponent<Rigidbody>();
         Rigidbody rb = OverBlock.GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezePositionZ;
         rb.useGravity = false;
+		rb.isKinematic = false;
         rb.freezeRotation = true;
         rb.mass = 12;
         rb.drag = 0;

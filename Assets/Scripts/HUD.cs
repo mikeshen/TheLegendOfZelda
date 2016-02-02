@@ -9,6 +9,7 @@ public class HUD : MonoBehaviour {
     public Text keyText;
     public Text oldManText;
     public bool isPaused = false;
+	public bool pausedNoHUD = false;
     public string secretMessage = "Eastmost Penninsula is the secret.";
     public float typingLength = 4.2f;
     private float percentTyped = 0;
@@ -48,6 +49,15 @@ public class HUD : MonoBehaviour {
         //if (PlayerControl.instance.transform.position.x <)
 
         // Allows pausing to occur
+		if (Input.GetKeyDown(KeyCode.RightShift)) {
+			pausedNoHUD = !pausedNoHUD;
+
+			if (pausedNoHUD)
+				Time.timeScale = 0;
+			else
+				Time.timeScale = 1;
+		}
+
         if (Input.GetKeyDown(KeyCode.Return)) {
             isPaused = !isPaused;
 
