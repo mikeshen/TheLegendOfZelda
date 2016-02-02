@@ -116,9 +116,9 @@ public class PlayerControl : MonoBehaviour {
         }
         else if (!isInvincible) {
             if (coll.gameObject.tag == "Enemy" && coll.gameObject.GetComponent<EnemyControl>().boomerangCooldown <= 0)
-                takeDamage(0.5f);
+                takeDamage(0.5f, coll);
             else if (coll.gameObject.tag == "SpikeTrap")
-                takeDamage(1);
+                takeDamage(1, coll);
 
         }
     }
@@ -131,7 +131,7 @@ public class PlayerControl : MonoBehaviour {
 
 	// CUSTOM FUNCTIONS
 
-    public void takeDamage(float amount) {
+    public void takeDamage(float amount, Collider coll) {
         isInvincible = true;
         coolDown = 1;
         currentHealth -= amount;
@@ -141,6 +141,21 @@ public class PlayerControl : MonoBehaviour {
             sr.color = Color.black;
             Application.LoadLevel("Dungeon");
         }
+		Vector3 knockbackDir = (instance.transform.position - coll.transform.position).normalized;
+		if (Mathf.Abs(knockbackDir.x) > Mathf.Abs(knockbackDir.y)) {
+			if (knockbackDir.x < 0)
+				knockbackDir = Vector3.left;
+			else
+				knockbackDir = Vector3.right;
+		}
+		else {
+			if (knockbackDir.y < 0)
+				knockbackDir = Vector3.down;	
+			else
+				knockbackDir = Vector3.up;
+		}
+
+		instance.GetComponent<Rigidbody>().AddForce(knockbackDir * 9999);
     }
 
 	void deleteDoors(GameObject door) {

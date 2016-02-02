@@ -70,6 +70,14 @@ public class Tile : MonoBehaviour {
         case 'S': // Solid
             bc.center = Vector3.zero;
             bc.size = Vector3.one;
+			if (gameObject.GetComponent<Rigidbody>() == null){
+				Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+				rb.useGravity = false;
+				rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+				rb.interpolation = RigidbodyInterpolation.Interpolate;
+				rb.constraints = RigidbodyConstraints.FreezeAll;
+				rb.isKinematic = true;
+			}
             break;
 		case 'D': // Door
 			bc.enabled = false;

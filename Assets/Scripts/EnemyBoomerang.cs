@@ -64,7 +64,7 @@ public class EnemyBoomerang : MonoBehaviour {
 
     void OnTriggerEnter(Collider coll) {
         if (coll.gameObject.tag == "Link" && ! PlayerControl.instance.isInvincible) {
-            PlayerControl.instance.takeDamage(0.5f);
+			PlayerControl.instance.takeDamage(0.5f, coll);
             setBoomerangReturn();
         }
     }
