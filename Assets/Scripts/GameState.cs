@@ -69,7 +69,7 @@ public class GameState : MonoBehaviour {
     // Use this for initialization
     void Awake() {
         instance = this;
-        for (int i = 0; i < 6; i++) 
+        for (int i = 0; i < 6; i++)
 
             for (int j = 0; j < 6; j++)
                 rooms[i, j] = new Room();
@@ -141,7 +141,7 @@ public class GameState : MonoBehaviour {
 		room.addSpawnObject(Prefab.BLOB, 40, 37);
 		room.addSpawnObject(Prefab.BLOB, 45, 38);
 
-		// Room 2, 4 
+		// Room 2, 4
 		room = rooms[2, 4];
 		room.setKeyRoom(40, 49);
 		room.addSpawnObject(Prefab.SKELETON, 40, 49);
@@ -181,6 +181,12 @@ public class GameState : MonoBehaviour {
                     markEnemyDestroyed(enemy, ec.index, x, y);
                 Destroy(enemy);
             }
+            else {
+                ec.damageCooldown = 1;
+                SpriteRenderer sr = ec.GetComponent<SpriteRenderer>();
+                sr.color = Color.red;
+            }
+
     }
 
     public void markEnemyDestroyed(GameObject enemy, int i, int x, int y) {
@@ -199,7 +205,7 @@ public class GameState : MonoBehaviour {
 
     public void spawnRoom(int x, int y) {
         Room room = rooms[x, y];
-        
+
         for (int i = 0; i < room.enemies.Count; i ++) {
             SpawnObject s = room.enemies[i];
             if (s.isAlive) {
@@ -219,7 +225,7 @@ public class GameState : MonoBehaviour {
                 Instantiate(prefabs[(int)Prefab.HEART], new Vector3(enemy.transform.position.x, enemy.transform.position.y, 0), Quaternion.identity);
             else if (chance < 0.5)
                 Instantiate(prefabs[(int)Prefab.RUPEE5], new Vector3(enemy.transform.position.x, enemy.transform.position.y, 0), Quaternion.identity);
-            else 
+            else
                 Instantiate(prefabs[(int)Prefab.RUPEE], new Vector3(enemy.transform.position.x, enemy.transform.position.y, 0), Quaternion.identity);
         }
         else {

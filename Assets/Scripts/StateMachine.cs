@@ -9,7 +9,7 @@ public class StateMachine {
 			_current_state.OnFinish();
 
 		_current_state = new_state;
-		// States sometimes need to reset their machine. 
+		// States sometimes need to reset their machine.
 		// This reference makes that possible.
 		_current_state.state_machine = this;
 		_current_state.OnStart();
@@ -156,7 +156,7 @@ public class StateLinkNormalMovement : State {
             pc.secondaryDirection = (int)verticalInput;
             verticalInput = 0;
         }
-		
+
 		if (horizontalInput > 0)
 			pc.currentDirection = Direction.EAST;
 		else if (horizontalInput < 0)
@@ -223,6 +223,20 @@ public class StateLinkNormalMovement : State {
 		}
 		return location;
 	}
+}
+
+public class StateLinkKnockBack: State {
+    PlayerControl pc;
+
+    public StateLinkKnockBack(PlayerControl pc) {
+        this.pc = pc;
+    }
+
+    public override void OnStart() {
+        pc.knockback = false;
+        pc.GetComponent<Rigidbody>().AddForce(pc.knockbackDir * 9999);
+        ConcludeState();
+    }
 }
 
 public class StateLinkAttack : State {
@@ -403,5 +417,4 @@ public class StateLinkBoomerangThrow : State {
 }
 // Additional recommended states:
 // StateDeath
-// StateDamaged
 // StateVictory

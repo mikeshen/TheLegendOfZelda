@@ -48,7 +48,7 @@ public class EnemyBoomerang : MonoBehaviour {
                     ec.cooldown = Random.Range(4f, 11f);
                     Destroy(gameObject);
                 }
-                else 
+                else
                     setBoomerangReturn();
             }
 
@@ -63,10 +63,42 @@ public class EnemyBoomerang : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider coll) {
-        if (coll.gameObject.tag == "Link" && ! PlayerControl.instance.isInvincible) {
-			PlayerControl.instance.takeDamage(0.5f, coll);
-            setBoomerangReturn();
+        if (coll.gameObject.tag == "Link") {
+            if (!PlayerControl.instance.isInvincible) {
+                if (Input.anyKey ||
+                    (!returning && !compareDirectionsOpposite(ec.currentDirection, PlayerControl.instance.currentDirection)) ||
+                    (returning &&  !compareDirectionsSame(ec.currentDirection, PlayerControl.instance.currentDirection)))
+                    PlayerControl.instance.takeDamage(0.5f, coll);
+            }
+            if (!returning)
+                setBoomerangReturn();
         }
+    }
+
+    bool compareDirectionsOpposite(Direction a, Direction b) {
+        if (a == Direction.NORTH && b == Direction.SOUTH)
+            return true;
+        else if (a == Direction.SOUTH && b == Direction.NORTH)
+            return true;
+        else if (a == Direction.EAST && b == Direction.WEST)
+            return true;
+        else if (a == Direction.WEST && b == Direction.EAST)
+            return true;
+        else
+            return false;
+    }
+
+    bool compareDirectionsSame(Direction a, Direction b) {
+        if (a == Direction.NORTH && b == Direction.NORTH)
+            return true;
+        else if (a == Direction.SOUTH && b == Direction.SOUTH)
+            return true;
+        else if (a == Direction.EAST && b == Direction.EAST)
+            return true;
+        else if (a == Direction.WEST && b == Direction.WEST)
+            return true;
+        else
+            return false;
     }
 
     void setBoomerangReturn() {

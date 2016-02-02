@@ -5,6 +5,7 @@ public enum Direction {NORTH, EAST, SOUTH, WEST};
 public enum EntityState {NORMAL, ATTACKING};
 
 public class PlayerControl : MonoBehaviour {
+    public static PlayerControl instance;
 
     public float walkingVelocity = 4;
     public int rupeeCount = 0;
@@ -23,14 +24,16 @@ public class PlayerControl : MonoBehaviour {
     public bool hasBow = false;
     public bool inBowRoom = false;
     public bool warped = false;
+    public bool knockback = false;
+    public Vector3 knockbackDir;
 
-    private float coolDown = 0;
+    private float cooldown = 0;
+
 
     // Game State
     public int roomOffsetX;
     public int roomOffsetY;
 
-    public static PlayerControl instance;
 
 	public Sprite[] linkRunDown;
 	public Sprite[] linkRunUp;
@@ -69,6 +72,8 @@ public class PlayerControl : MonoBehaviour {
         checkBowRoomTransition();
         if (isInvincible)
             LinkDamageAnimation();
+        if (knockback)
+            controlStateMachine.ChangeState(new StateLinkKnockBack(this));
         if (RoomTransitions.instance.moveCamera)
             return;
 
@@ -133,7 +138,7 @@ public class PlayerControl : MonoBehaviour {
 
     public void takeDamage(float amount, Collider coll) {
         isInvincible = true;
-        coolDown = 1;
+        cooldown = 1;
         currentHealth -= amount;
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         sr.color = Color.red;
@@ -141,7 +146,8 @@ public class PlayerControl : MonoBehaviour {
             sr.color = Color.black;
             Application.LoadLevel("Dungeon");
         }
-		Vector3 knockbackDir = (instance.transform.position - coll.transform.position).normalized;
+        knockback = true;
+		knockbackDir = (instance.transform.position - coll.transform.position).normalized;
 		if (Mathf.Abs(knockbackDir.x) > Mathf.Abs(knockbackDir.y)) {
 			if (knockbackDir.x < 0)
 				knockbackDir = Vector3.left;
@@ -150,14 +156,10 @@ public class PlayerControl : MonoBehaviour {
 		}
 		else {
 			if (knockbackDir.y < 0)
-				knockbackDir = Vector3.down;	
+				knockbackDir = Vector3.down;
 			else
 				knockbackDir = Vector3.up;
 		}
-
-		instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
-		instance.GetComponent<Rigidbody>().AddForce(knockbackDir * 9999);
-		instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
 	void deleteDoors(GameObject door) {
@@ -195,13 +197,14 @@ public class PlayerControl : MonoBehaviour {
             sr.color = Color.white;
         else
             sr.color = Color.blue;
-        coolDown -= Time.deltaTime;
-        if (coolDown <= 0f) {
+        cooldown -= Time.deltaTime;
+        if (cooldown <= 0f) {
             sr.color = Color.white;
             isInvincible = false;
-            coolDown = 0f;
+            cooldown = 0f;
         }
     }
+
     void checkBowRoomTransition() {
         if ((transform.position.x >= 24) && (transform.position.x <= 25) && transform.position.y == 60) {
             GameState.destroyOnScreen();

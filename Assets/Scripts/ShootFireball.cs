@@ -24,7 +24,10 @@ public class ShootFireball : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider coll) {
-        if (coll.gameObject.tag == "Link" && !PlayerControl.instance.isInvincible)
+        if (coll.gameObject.tag == "Link" && !PlayerControl.instance.isInvincible) {
             PlayerControl.instance.takeDamage(0.5f, coll);
+            Destroy(gameObject);
+
+        }
     }
 }
